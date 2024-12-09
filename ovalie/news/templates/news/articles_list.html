@@ -8,6 +8,7 @@
     <ul>
         {% for article in articles %}
         <li>
+            <h3>{{ article.website }}</h3>
             <a href="{{ article.link }}" target="_blank" rel="noopener noreferrer">
                 {{ article.title }}
             </a>
