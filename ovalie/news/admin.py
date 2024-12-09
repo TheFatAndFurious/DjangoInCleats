@@ -1,6 +1,7 @@
 from django.contrib import admin
-from .models import Articles
+from .models import Article
 
-@admin.register(Articles)
+
+@admin.register(Article)
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ('title', 'link', 'published_at')
+    list_display = ('title', 'link', 'published_at', 'website')
