@@ -8,6 +8,8 @@ class Article(models.Model):
     website = models.CharField(max_length=255)
     is_visible = models.BooleanField(default=True)
     admin_comment = models.TextField(null=True)
+    is_featured = models.BooleanField(default=False)
+    image = models.CharField(blank=True, max_length=255)
 
     def __str__(self):
         return self.title

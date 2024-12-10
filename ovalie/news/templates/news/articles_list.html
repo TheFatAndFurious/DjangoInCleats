@@ -6,25 +6,78 @@
        {% tailwind_css %}
 </head>
 <body>
-        <button class="btn btn-active">Default</button>
-        <button class="btn btn-active btn-neutral">Neutral</button>
-        <button class="btn btn-active btn-primary">Primary</button>
-        <button class="btn btn-active btn-secondary">Secondary</button>
-        <button class="btn btn-active btn-accent">Accent</button>
-        <button class="btn btn-active btn-ghost">Ghost</button>
-        <button class="btn btn-active btn-link">Link</button>
-    <h1 class="text-4xl text-green-500 text-center">Rugby news</h1>
-    <h1>Rugby News</h1>
-    <ul>
-        {% for article in articles %}
-        <li>
-            <h3>{{ article.website }}</h3>
-            <a href="{{ article.link }}" target="_blank" rel="noopener noreferrer">
+
+<header>
+    <div class="navbar bg-base-300">
+            <h1 class="text-4xl text-green-500 text-center">Rugby news</h1>
+    </div>
+</header>
+
+    <div class="hero bg-base-200 h-1/2">
+      <div class="hero-content flex-col lg:flex-row">
+        <div>
+          <h1 class="text-5xl font-bold">Bienvenue!</h1>
+          <p class="py-6">
+            Ovalie News : votre terrain d’information rugbystique.
+            Explorez chaque jour le meilleur de l'actualité rugby : clubs, équipes nationales, moments forts et coulisses du jeu.
+            Ici, on vit rugby, on respire rugby, et on partage la passion avec vous !
+          </p>
+        </div>
+      </div>
+    </div>
+
+<!--  FEATURED ARTICLES ZONE-->
+<section class="flex items-center justify-center">
+  <div class="flex flex-col items-center space-y-6 mx-auto text-center">
+    <h2 class="text-2xl font-bold mb-4">
+      FEATURED ARTICLES
+    </h2>
+
+    <div class="flex">
+      {% for article in featured_articles %}
+      <div class="card bg-base-100 image-full w-72 shadow-xl m-2">
+  <figure>
+    <img
+      src="{{article.image}}"
+      alt="{{article.title}}" />
+  </figure>
+  <div class="card-body">
+    <p>{{article.title}}</p>
+  </div>
+</div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+
+
+<div class="flex justify-center items-center overflow-x-auto w-2/3 mx-auto">
+  <table class="table">
+    <!-- head -->
+    <thead>
+      <tr>
+        <th>Site</th>
+        <th>Titre</th>
+        <th>Publication</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- row 1 -->
+      {% for article in articles %}
+      <tr>
+        <td>{{ article.website }}</td>
+        <td><a href="{{ article.link }}" target="_blank" rel="noopener noreferrer">
                 {{ article.title }}
             </a>
-            <small>Published: {{ article.published_at|date:"Y-m-d H:i" }}</small>
-        </li>
+        </td>
+        <td>Published: {{ article.published_at|date:"Y-m-d H:i" }}</td>
+      </tr>
         {% endfor %}
-    </ul>
+    </tbody>
+  </table>
+</div>
+
 </body>
 </html>
