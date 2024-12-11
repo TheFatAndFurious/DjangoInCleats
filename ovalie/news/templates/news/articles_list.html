@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<header>
+<header class="sticky top-0 z-50">
     <div class="navbar bg-base-300">
             <h1 class="text-4xl text-green-500 text-center">Rugby news</h1>
     </div>
@@ -53,7 +53,7 @@
 
 
 
-<div class="flex justify-center items-center overflow-x-auto w-2/3 mx-auto">
+<div class="flex justify-center items-center overflow-x-auto w-2/3 mx-auto" id="articles">
   <table class="table">
     <!-- head -->
     <thead>
@@ -65,7 +65,7 @@
     </thead>
     <tbody>
       <!-- row 1 -->
-      {% for article in articles %}
+      {% for article in page_obj %}
       <tr>
         <td>{{ article.website }}</td>
         <td><a href="{{ article.link }}" target="_blank" rel="noopener noreferrer">
@@ -77,6 +77,21 @@
         {% endfor %}
     </tbody>
   </table>
+
+  <!-- Pagination Controls -->
+</div>
+<div class="pagination flex justify-center">
+  {% if page_obj.has_previous %}
+  <a href="?page=1">&laquo; First</a>
+  <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+  {% endif %}
+
+  <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+
+  {% if page_obj.has_next %}
+  <a href="?page={{ page_obj.next_page_number }}#articles">Next</a>
+  <a href="?page={{ page_obj.paginator.num_pages }}#articles">Last &raquo;</a>
+  {% endif %}
 </div>
 
 </body>
