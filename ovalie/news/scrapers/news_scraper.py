@@ -9,10 +9,14 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ovalie.settings')
 django.setup()
 
-from news.models import Article
+from news.models import Article, Website
 
 
-def save_article(title, link, website):
+def save_article(title, link, website_name):
+    website, created = Website.objects.get_or_create(
+        name=website_name,
+        defaults={'url': f'https://{website_name}.com', 'logo': None}  # Update 'logo' if needed
+    )
     try:
         Article.objects.get(link=link)
         print(f"Duplicate found: {title}")
