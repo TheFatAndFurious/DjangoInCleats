@@ -12,6 +12,19 @@ django.setup()
 from news.models import Article, Website
 
 
+def run_all_scrapers():
+    print("Running scraper 1")
+    scrap_rugbyrama()
+
+    print("Running scraper 2")
+    scrap_acturugby()
+
+    print("Running scraper 3")
+    scrap_rugbynistere()
+
+    print("all scrapers ran successfully")
+
+
 def save_article(title, link, website_name):
     website, created = Website.objects.get_or_create(
         name=website_name,
@@ -36,6 +49,7 @@ def scrap_rugbyrama():
         link = article['href']
         save_article(title, link, 'rugbyrama')
 
+
 def scrap_rugbynistere():
     url = 'https://lerugbynistere.fr'
     response = requests.get(url)
@@ -46,6 +60,7 @@ def scrap_rugbynistere():
         title = article.get_text()
         link = article['href']
         save_article(title, link, "rugbynistere")
+
 
 def scrap_acturugby():
     global title
