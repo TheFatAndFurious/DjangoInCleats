@@ -67,12 +67,12 @@
       <!-- row 1 -->
       {% for article in page_obj %}
       <tr>
-        <td><img src="{{ article.website.logo }}" class="h-4 w-4"></td>
+        <td><img class="max-h-12" src="{{ article.website.logo }}"></td>
         <td><a href="{{ article.link }}" target="_blank" rel="noopener noreferrer">
                 {{ article.title }}
             </a>
         </td>
-        <td>Published: {{ article.published_at|date:"Y-m-d H:i" }}</td>
+        <td>Publication: {{ article.published_at|date:"Y-m-d H:i" }}</td>
       </tr>
         {% endfor %}
     </tbody>
