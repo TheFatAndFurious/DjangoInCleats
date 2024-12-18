@@ -9,7 +9,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ovalie.settings')
 django.setup()
 
-from news.models import Article, Website
+from news.models import Article, Website, KeywordGroup
 
 
 def run_all_scrapers():
@@ -40,6 +40,13 @@ def save_article(title, link, website_name):
         Article.objects.create(link=link, title=title, website=website)
         print(f"Article saved: {title}")
 
+def check_if_keywords(title):
+    matched_groups = []
+    for group in KeywordGroup.objects.all():
+        for keyword in group.keywords:
+            if keyword.lower() in title.lower():
+                matched_groups.append(group)
+    return matched_groups
 
 def scrap_rugbyrama():
     url = "https://rugbyrama.fr"
