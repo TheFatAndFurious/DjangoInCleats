@@ -22,6 +22,9 @@ def run_all_scrapers():
     print("Running scraper 3")
     scrap_rugbynistere()
 
+    print("Running scraper 4")
+    scrap_lequipe()
+
     print("all scrapers ran successfully")
 
 
@@ -76,6 +79,17 @@ def scrap_acturugby():
         link = article.find("a")
         linktosave = link['href']
         save_article(title, linktosave, "dicodusport")
+
+def scrap_lequipe():
+    url = "https://www.lequipe.fr/Rugby/"
+    response = requests.get(url)
+    soup = BeautifulSoup(response.content, "html.parser")
+    articles = soup.find_all("a", class_="ChronoItem__link")
+
+    for article in articles:
+        title = article.get_text()
+        link = article["href"]
+        save_article(title, link, "lequipe")
 
 
 if __name__ == "__main__":

@@ -8,6 +8,14 @@ class Website(models.Model):
     def __str__(self):
         return self.name
 
+class KeywordGroup(models.Model):
+    name = models.CharField(max_length=80, unique=True)
+    keywords = models.JSONField(blank=True, null=True)
+    image = models.ImageField(upload_to='static/news/images/keywords_images', null=True, blank=True)
+
+    def __str__(self):
+        return self.name
+
 class Article(models.Model):
     title = models.CharField(max_length=255)
     link = models.URLField(unique=True)  # Unique constraint
@@ -16,7 +24,7 @@ class Article(models.Model):
     is_visible = models.BooleanField(default=True)
     admin_comment = models.TextField(null=True)
     is_featured = models.BooleanField(default=False)
-    image = models.CharField(blank=True, max_length=255)
-
+    image = models.ImageField(upload_to='static/news/article_image')
+    keywords = models.ManyToManyField(KeywordGroup, blank=True)
     def __str__(self):
         return self.title
