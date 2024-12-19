@@ -22,4 +22,4 @@ class WebsiteAdmin(admin.ModelAdmin):
 
 @admin.register(KeywordGroup)
 class KeywordAdmin(admin.ModelAdmin):
-    list_display = ('name', 'keywords', 'image', 'color')
+    list_display = ('name', 'keywords', 'is_top14', 'image', 'color')
