@@ -35,18 +35,19 @@
     </h2>
 
     <div class="flex">
-      {% for article in featured_articles %}
-      <div class="card bg-base-100 image-full w-72 shadow-xl m-2">
-  <figure>
-    <img
-      src="{{article.keywords.image.url}}"
-      alt="{{article.title}}" />
-  </figure>
-  <div class="card-body">
-    <p>{{article.title}}</p>
-  </div>
+ {% for article in featured_articles %}
+<div class="card bg-base-100 image-full w-72 shadow-xl m-2">
+    <figure>
+        <img
+            src="{% if article.image %}{{ article.image.url }}{% elif article.keywords.first.image %}{{ article.keywords.first.image.url }}{% else %}{% static 'images/fallback.jpg' %}{% endif %}"
+            alt="{{ article.title }}" />
+    </figure>
+    <div class="card-body">
+        <p>{{ article.title }}</p>
+    </div>
 </div>
-      {% endfor %}
+{% endfor %}
+
     </div>
   </div>
 </section>
