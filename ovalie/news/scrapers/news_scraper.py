@@ -29,16 +29,27 @@ def run_all_scrapers():
 
 
 def save_article(title, link, website_name):
-    website, created = Website.objects.get_or_create(
-        name=website_name,
-        defaults={'url': f'https://{website_name}.com', 'logo': None}  # Update 'logo' if needed
+    website, _ = Website.objects.get_or_create(name=website_name)
+
+    article, created = Article.objects.get_or_create(
+        link=link,
+        defaults={'title': title, 'website': website}
     )
-    try:
-        Article.objects.get(link=link)
-        print(f"Duplicate found: {title}")
-    except Article.DoesNotExist:
-        Article.objects.create(link=link, title=title, website=website)
-        print(f"Article saved: {title}")
+
+    if created:
+        # Assign multiple keyword groups
+        groups = check_if_keywords(title)
+        article.keywords.set(groups)
+
+        # Assign a default image from the first matching group
+        if not article.image and groups:
+            article.image = groups[0].image
+        article.save()
+
+        print(f"Article saved: {title} ")
+    else:
+        print(f"Duplicate article: {title}")
+
 
 def check_if_keywords(title):
     matched_groups = []
@@ -47,6 +58,7 @@ def check_if_keywords(title):
             if keyword.lower() in title.lower():
                 matched_groups.append(group)
     return matched_groups
+
 
 def scrap_rugbyrama():
     url = "https://rugbyrama.fr"
@@ -86,6 +98,7 @@ def scrap_acturugby():
         link = article.find("a")
         linktosave = link['href']
         save_article(title, linktosave, "dicodusport")
+
 
 def scrap_lequipe():
     url = "https://www.lequipe.fr/Rugby/"

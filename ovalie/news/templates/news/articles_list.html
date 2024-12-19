@@ -39,7 +39,7 @@
       <div class="card bg-base-100 image-full w-72 shadow-xl m-2">
   <figure>
     <img
-      src="{{article.image}}"
+      src="{{article.keywords.image.url}}"
       alt="{{article.title}}" />
   </figure>
   <div class="card-body">
@@ -52,9 +52,11 @@
 </section>
 
 
+<!--Liste des liens vers les autres sites-->
 
 
-<div class="flex justify-center items-center overflow-x-auto w-2/3 mx-auto" id="articles">
+<div class="flex flex-col justify-center items-center overflow-x-auto w-2/3 mx-auto my-6" id="articles">
+  <h2>Les dernieres nouvelles</h2>
   <table class="table">
     <!-- head -->
     <thead>
@@ -69,9 +71,18 @@
       {% for article in page_obj %}
       <tr>
         <td><img class="max-h-12" src="{{ article.website.logo }}"></td>
-        <td><a href="{{ article.link }}" target="_blank" rel="noopener noreferrer">
+        <td>
+          <div class="flex flex-col">
+            <ul class="flex">
+              {% for keyword_group in article.keywords.all %}
+                <li class="px-2 mr-2 font-semibold rounded" style="background-color: {{ keyword_group.color }}">{{ keyword_group.name }}</li>
+              {% endfor %}
+            </ul>
+          <a href="{{ article.link }}" target="_blank" rel="noopener noreferrer">
                 {{ article.title }}
             </a>
+
+          </div>
         </td>
         <td>{{ article.published_at|friendly_date }}</td>
       </tr>

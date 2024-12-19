@@ -4,10 +4,11 @@ from django.core.paginator import Paginator
 
 def article_list(request):
     # fetch articles from the DB
-    articles = Article.objects.order_by('-published_at')
+    articles = Article.objects.prefetch_related('keywords').order_by('-published_at')
 
     # fetch featured articles
-    featured_articles = Article.objects.filter(is_featured=True).order_by('-published_at')[:3]
+    # TODO: use the articles fetching method instead of fetching several times the same data
+    featured_articles = Article.objects.prefetch_related('keywords').filter(is_featured=True).order_by('-published_at')[:3]
 
     #pagination
     paginator = Paginator(articles, 25)

@@ -12,6 +12,7 @@ class KeywordGroup(models.Model):
     name = models.CharField(max_length=80, unique=True)
     keywords = models.JSONField(blank=True, null=True)
     image = models.ImageField(upload_to='static/news/images/keywords_images', null=True, blank=True)
+    color = models.CharField(max_length=7, default="#000000")
 
     def __str__(self):
         return self.name
