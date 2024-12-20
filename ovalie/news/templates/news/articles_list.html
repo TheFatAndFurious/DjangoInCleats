@@ -5,6 +5,7 @@
 <head>
     <title>Rugby News Aggregator</title>
        {% tailwind_css %}
+        <script src="{% static 'js/htmx.min.js' %}" defer></script>
 </head>
 <body>
 
@@ -57,9 +58,15 @@
 <div class="max-w-2xl mx-auto">
     <div class=" grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-4">
         {% for team in teams %}
-        <div class="w-20 h-20 flex items-center justify-center bg-gray-200 rounded-lg">
-            <img src="{{ team.image|default:'/static/images/placeholder.png' }}" alt="{{ team.name }}" class="w-full h-full object-cover">
-        </div>
+        <a href="#"
+            hx-get="?team={{team.name}}"
+            hx-target="#articles-container"
+           hx-swap="innerHTML"
+            >
+            <div class="w-20 h-20 flex items-center justify-center bg-gray-200 rounded-lg">
+                <img src="{{ team.image|default:'/static/images/placeholder.png' }}" alt="{{ team.name }}" class="w-full h-full object-cover">
+            </div>
+        </a>
         {% endfor %}
     </div>
 </div>
@@ -80,7 +87,7 @@
         <th>Publication</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody id="articles-container">
       <!-- row 1 -->
       {% for article in page_obj %}
       <tr>

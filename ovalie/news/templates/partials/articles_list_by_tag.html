@@ -1,0 +1,16 @@
+{% load custom_filters %}
+<tbody id="articles-container">
+    {% for article in page_obj %}
+      <tr>
+        <td><img class="max-h-12" src="{{ article.website.logo }}"></td>
+        <td>
+          <div class="flex flex-col">
+          <a href="{{ article.link }}" target="_blank" rel="noopener noreferrer">
+                {{ article.title }}
+          </a>
+          </div>
+        </td>
+        <td>{{ article.published_at|friendly_date }}</td>
+      </tr>
+        {% endfor %}
+</tbody>

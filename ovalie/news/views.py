@@ -4,7 +4,13 @@ from django.core.paginator import Paginator
 
 def article_list(request):
     # fetch articles from the DB
-    articles = Article.objects.prefetch_related('keywords').order_by('-published_at')
+    team = request.GET.get('team')
+    if team:
+        print(f"value for {team}")
+        articles = Article.objects.filter(keywords__name__iexact=team).distinct()
+        print(f"{articles}")
+    else:
+        articles = Article.objects.prefetch_related('keywords').order_by('-published_at')
 
     # fetch featured articles
     # TODO: use the articles fetching method instead of fetching several times the same data
@@ -19,10 +25,15 @@ def article_list(request):
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
-
-    return render(request, 'news/articles_list.html', {
-        'page_obj': page_obj,
-        'teams': teams,
-        'featured_articles': featured_articles})
+    if request.headers.get('HX-Request'):
+        return render(request, 'partials/articles_list_by_tag.html', {
+            'page_obj': page_obj,
+            'teams': teams,
+            'featured_articles': featured_articles})
+    else:
+        return render(request, 'news/articles_list.html', {
+            'page_obj': page_obj,
+            'teams': teams,
+            'featured_articles': featured_articles})
 
 
