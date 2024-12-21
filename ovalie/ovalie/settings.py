@@ -117,7 +117,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
-    # BASE_DIR / "static",  # Global static directory (if used)
+    BASE_DIR / "static",  # Global static directory (if used)
     BASE_DIR / "news/static/news",  # Add your app's static directory
 ]
 

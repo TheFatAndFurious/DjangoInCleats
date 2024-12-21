@@ -1,7 +1,7 @@
 {% load static tailwind_tags %}
 {% load custom_filters %}
 <!DOCTYPE html>
-<html>
+<html class="scroll-smooth">
 <head>
     <title>Rugby News Aggregator</title>
        {% tailwind_css %}
@@ -58,7 +58,7 @@
 <div class="max-w-2xl mx-auto">
     <div class=" grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-4">
         {% for team in teams %}
-        <a href="#"
+        <a href="#articles"
             hx-get="?team={{team.name}}"
             hx-target="#articles-container"
            hx-swap="innerHTML"
