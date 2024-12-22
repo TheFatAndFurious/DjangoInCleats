@@ -56,16 +56,19 @@
 
 <!--Listes des equipes de top 14-->
 <div class="max-w-2xl mx-auto">
+    Cliquez sur un logo pour afficher les news de l'equipe
     <div class=" grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-4">
         {% for team in teams %}
         <a href="#articles"
             hx-get="?team={{team.name}}"
             hx-target="#articles-container"
            hx-swap="innerHTML"
+           class="flex flex-col"
             >
-            <div class="w-20 h-20 flex items-center justify-center bg-gray-200 rounded-lg">
+            <div class="w-20 h-20 flex flex-col items-center justify-center bg-gray-200 rounded-lg">
                 <img src="{{ team.image|default:'/static/images/placeholder.png' }}" alt="{{ team.name }}" class="w-full h-full object-cover">
             </div>
+                <input type="radio" value="{{ team.name }}" name="team" {% if team_filter == team.name %}checked{% endif %} class="radio-accent mx-auto mt-2">
         </a>
         {% endfor %}
     </div>
@@ -73,9 +76,27 @@
 
 
 
+<!--Menu de selection de langue des articles-->
+<form hx-get="/" hx-target="#articles-container" hx-swap="innerHTML" class="flex flex-col space-x-4 max-w-2xl mx-auto my-8">
+    Par defaut seuls les articles en langues francaise sont affiches, vous pouvez choisir d'afficher les articles ecrits en anglais grace au menu
+    <div class="flex justify-center">
+    <label>
+        <input type="radio" name="language" class="radio radio-accent" value="french" checked="checked" {% if language_filter == 'french' %}checked{% endif %}>
+        French
+    </label>
+    <label>
+        <input type="radio" name="language" class="radio radio-accent" value="english" {% if language_filter == 'english' %}checked{% endif %}>
+        English
+    </label>
+    <label>
+        <input type="radio" name="language" class="radio radio-accent" value="all" {% if language_filter == 'all' %}checked{% endif %}>
+        All
+    </label>
+
+    </div>
+</form>
+
 <!--Liste des liens vers les autres sites-->
-
-
 <div class="flex flex-col justify-center items-center overflow-x-auto w-2/3 mx-auto my-6" id="articles">
   <h2>Les dernieres nouvelles</h2>
   <table class="table">

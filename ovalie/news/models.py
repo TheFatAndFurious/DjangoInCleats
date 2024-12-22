@@ -28,5 +28,6 @@ class Article(models.Model):
     is_featured = models.BooleanField(default=False)
     image = models.ImageField(upload_to='static/news/article_image')
     keywords = models.ManyToManyField(KeywordGroup, blank=True)
+    is_french_language = models.BooleanField(default=True)
     def __str__(self):
         return self.title

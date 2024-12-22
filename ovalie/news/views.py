@@ -5,10 +5,10 @@ from django.core.paginator import Paginator
 def article_list(request):
     # fetch articles from the DB
     team = request.GET.get('team')
+    language = request.GET.get('language')
+
     if team:
-        print(f"value for {team}")
         articles = Article.objects.filter(keywords__name__iexact=team).distinct()
-        print(f"{articles}")
     else:
         articles = Article.objects.prefetch_related('keywords').order_by('-published_at')
 
