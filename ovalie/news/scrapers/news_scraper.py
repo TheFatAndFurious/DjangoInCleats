@@ -13,23 +13,22 @@ from news.models import Article, Website, KeywordGroup
 
 
 def run_all_scrapers():
-    print("Running scraper 1")
+    print("Scraper rugbyrama")
     scrap_rugbyrama()
 
-    print("Running scraper 2")
+    print("Scraping dicodusport")
     scrap_acturugby()
 
-    print("Running scraper 3")
+    print("Scraping rugbynistere")
     scrap_rugbynistere()
 
-    print("Running scraper 4")
+    print("Scraping lequipe")
     scrap_lequipe()
 
-    print("Running scraper 5")
+    print("Scraping rugbypass")
     scrap_rugbypass()
 
-    print("all scrapers ran successfully")
-
+    print("all scrapers ran successfully, we gucci")
 
 def save_article(title, link, website_name):
     website, _ = Website.objects.get_or_create(name=website_name)
@@ -53,7 +52,6 @@ def save_article(title, link, website_name):
     else:
         print(f"Duplicate article: {title}")
 
-
 def check_if_keywords(title):
     matched_groups = []
     for group in KeywordGroup.objects.all():
@@ -61,7 +59,6 @@ def check_if_keywords(title):
             if keyword.lower() in title.lower():
                 matched_groups.append(group)
     return matched_groups
-
 
 def scrap_rugbyrama():
     url = "https://rugbyrama.fr"
@@ -74,7 +71,6 @@ def scrap_rugbyrama():
         link = article['href']
         save_article(title, link, 'rugbyrama')
 
-
 def scrap_rugbynistere():
     url = 'https://lerugbynistere.fr'
     response = requests.get(url)
@@ -85,7 +81,6 @@ def scrap_rugbynistere():
         title = article.get_text()
         link = article['href']
         save_article(title, link, "rugbynistere")
-
 
 def scrap_acturugby():
     global title
@@ -113,7 +108,6 @@ def scrap_rugbypass():
         link = article["href"]
         save_article(title, link, "rugbypass")
 
-
 def scrap_lequipe():
     url = "https://www.lequipe.fr/Rugby/"
     response = requests.get(url)
@@ -124,7 +118,6 @@ def scrap_lequipe():
         title = article.get_text()
         link = article["href"]
         save_article(title, link, "lequipe")
-
 
 if __name__ == "__main__":
     run_all_scrapers()
