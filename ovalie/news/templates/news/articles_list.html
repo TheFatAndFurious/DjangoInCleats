@@ -15,6 +15,8 @@
     </div>
 </header>
 
+<!--WELCOME-->
+<div class="max-w-3xl mx-auto">
     <div class="hero bg-base-200 h-1/2">
       <div class="hero-content flex-col lg:flex-row">
         <div>
@@ -53,26 +55,26 @@
   </div>
 </section>
 
+<div hx-get="/" hx-target="#articles-container" hx-swap="innerHTML" hx-trigger="change from:select" hx-include="#team, #language">
+    <div class="flex justify-between">
+        <!-- TEAM SELECTOR -->
+        <select class="select select-bordered w-full max-w-xs" id="team" name="team">
+            <option selected value="all_teams">Toutes les equipes</option>
+            {% for team in teams %}
+                <option value="{{ team.name }}">{{ team.name }}</option>
+            {% endfor %}
+        </select>
 
-<!--Listes des equipes de top 14-->
-<div class="max-w-2xl mx-auto">
-    Cliquez sur un logo pour afficher les news de l'equipe
-    <div class=" grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-4">
-        {% for team in teams %}
-        <a href="#articles"
-            hx-get="?team={{team.name}}"
-            hx-target="#articles-container"
-           hx-swap="innerHTML"
-           class="flex flex-col"
-            >
-            <div class="w-20 h-20 flex flex-col items-center justify-center bg-gray-200 rounded-lg">
-                <img src="{{ team.image|default:'/static/images/placeholder.png' }}" alt="{{ team.name }}" class="w-full h-full object-cover">
-            </div>
-                <input type="radio" value="{{ team.name }}" name="team" {% if team_filter == team.name %}checked{% endif %} class="radio-accent mx-auto mt-2">
-        </a>
-        {% endfor %}
+        <!-- LANGUAGE SELECTOR -->
+        <select class="select select-bordered w-full max-w-xs" id="language" name="language">
+            <option selected value="french">French</option>
+            <option value="english">English</option>
+            <option value="all_articles">Both</option>
+        </select>
     </div>
 </div>
+
+
 
 
 <!--Menu de selection de langue des articles-->
@@ -96,7 +98,7 @@
 </form>
 
 <!--Liste des liens vers les autres sites-->
-<div class="flex flex-col justify-center items-center overflow-x-auto w-2/3 mx-auto my-6" id="articles">
+<div class="flex flex-col justify-center items-center overflow-x-auto    mx-auto my-6" id="articles">
   <h2>Les dernieres nouvelles</h2>
   <table class="table">
     <!-- head -->
@@ -146,6 +148,6 @@
   <a href="?page={{ page_obj.paginator.num_pages }}#articles">Last &raquo;</a>
   {% endif %}
 </div>
-
+</div>
 </body>
 </html>
