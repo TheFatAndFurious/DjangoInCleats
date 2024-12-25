@@ -88,8 +88,8 @@
       </tr>
     </thead>
     <tbody id="articles-container">
-      <!-- row 1 -->
       {% for article in page_obj %}
+      <!-- row 1 -->
       <tr>
         <td><img class="max-h-12" src="{{ article.website.logo }}"></td>
         <td>
@@ -107,6 +107,8 @@
         </td>
         <td>{{ article.published_at|friendly_date }}</td>
       </tr>
+      {% empty %}
+      wow such empty
         {% endfor %}
     </tbody>
   </table>

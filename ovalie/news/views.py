@@ -21,11 +21,11 @@ def article_list(request):
     else:
         match language:
             case "french":
-                articles = Article.objects.filter(keywords__name__iexact=team).filter(is_french_language=True).distinct()
+                articles = Article.objects.filter(keywords__name__iexact=team).filter(is_french_language=True).distinct().order_by('-published_at')
             case "english":
-                articles = Article.objects.filter(keywords__name__iexact=team).filter(is_french_language=False).distinct()
+                articles = Article.objects.filter(keywords__name__iexact=team).filter(is_french_language=False).distinct().order_by('-published_at')
             case "all_articles":
-                articles = Article.objects.filter(keywords__name__iexact=team).distinct()
+                articles = Article.objects.filter(keywords__name__iexact=team).distinct().order_by('-published_at')
 
     # fetch featured articles
     # TODO: use the articles fetching method instead of fetching several times the same data

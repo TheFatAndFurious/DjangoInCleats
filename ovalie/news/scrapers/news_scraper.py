@@ -30,12 +30,12 @@ def run_all_scrapers():
 
     print("all scrapers ran successfully, we gucci")
 
-def save_article(title, link, website_name):
+def save_article(title, link, website_name, is_french_language=True):
     website, _ = Website.objects.get_or_create(name=website_name)
 
     article, created = Article.objects.get_or_create(
         link=link,
-        defaults={'title': title, 'website': website}
+        defaults={'title': title, 'website': website, 'is_french_language':is_french_language}
     )
 
     if created:
