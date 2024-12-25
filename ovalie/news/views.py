@@ -6,13 +6,26 @@ def article_list(request):
     # fetch articles from the DB
     team = request.GET.get('team')
     language = request.GET.get('language')
+    articles = []
 
     # Here we are using params to filter articles by team
     # if the 'team' value being received is equals to 'all_teams' then we will fetch all articles regardless of teams
     if team == 'all_teams':
-        articles = Article.objects.prefetch_related('keywords').order_by('-published_at')
+        match language:
+            case "french":
+                articles = Article.objects.filter(is_french_language=True).prefetch_related('keywords').order_by('-published_at')
+            case "english":
+                articles = Article.objects.filter(is_french_language=False).prefetch_related('keywords').order_by('-published_at')
+            case "all_articles":
+                articles = Article.objects.prefetch_related('keywords').order_by('-published_at')
     else:
-        articles = Article.objects.filter(keywords__name__iexact=team).distinct()
+        match language:
+            case "french":
+                articles = Article.objects.filter(keywords__name__iexact=team).filter(is_french_language=True).distinct()
+            case "english":
+                articles = Article.objects.filter(keywords__name__iexact=team).filter(is_french_language=False).distinct()
+            case "all_articles":
+                articles = Article.objects.filter(keywords__name__iexact=team).distinct()
 
     # fetch featured articles
     # TODO: use the articles fetching method instead of fetching several times the same data
