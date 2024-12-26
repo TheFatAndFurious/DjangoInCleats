@@ -2,6 +2,13 @@ from django.shortcuts import render
 from .models import Article, KeywordGroup
 from django.core.paginator import Paginator
 
+def home(request):
+    featured_articles = Article.objects.prefetch_related('keywords').filter(is_featured=True).order_by('-published_at')[:3]
+
+    return render(request, 'news/home.html', {
+        'featured_articles': featured_articles
+    })
+
 def article_list(request):
     # fetch articles from the DB
     team = request.GET.get('team')

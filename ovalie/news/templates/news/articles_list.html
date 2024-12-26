@@ -4,8 +4,8 @@
 <html class="scroll-smooth">
 <head>
     <title>Rugby News Aggregator</title>
-       {% tailwind_css %}
-        <script src="{% static 'js/htmx.min.js' %}" defer></script>
+    {% tailwind_css %}
+    <script src="{% static 'js/htmx.min.js' %}" defer></script>
 </head>
 <body>
 
@@ -78,7 +78,7 @@
 <!--Liste des liens vers les autres sites-->
 <div class="flex flex-col justify-center items-center overflow-x-auto    mx-auto my-6" id="articles">
   <h2>Les dernieres nouvelles</h2>
-  <table class="table">
+  <table class="table table-zebra">
     <!-- head -->
     <thead>
       <tr>
@@ -107,8 +107,6 @@
         </td>
         <td>{{ article.published_at|friendly_date }}</td>
       </tr>
-      {% empty %}
-      wow such empty
         {% endfor %}
     </tbody>
   </table>

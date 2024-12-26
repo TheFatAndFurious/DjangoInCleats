@@ -1,0 +1,25 @@
+{% load static tailwind_tags %}
+{% load custom_filters %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Le rugbyphile{% endblock %}</title>
+    {% tailwind_css %}
+    <script src="{% static 'js/htmx.min.js' %}" defer></script>
+</head>
+<body>
+    <header class="sticky top-0 z-50">
+        {% include 'partials/header.html' %}
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        {% include 'partials/footer.html' %}
+    </footer>
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

@@ -106,7 +106,7 @@ def scrap_rugbypass():
     for article in articles:
         title = article["aria-label"]
         link = article["href"]
-        save_article(title, link, "rugbypass")
+        save_article(title, link, "rugbypass", False)
 
 def scrap_lequipe():
     url = "https://www.lequipe.fr/Rugby/"

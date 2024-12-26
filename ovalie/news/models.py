@@ -29,5 +29,6 @@ class Article(models.Model):
     image = models.ImageField(upload_to='static/news/article_image')
     keywords = models.ManyToManyField(KeywordGroup, blank=True)
     is_french_language = models.BooleanField(default=True)
+    is_video = models.BooleanField(default=False)
     def __str__(self):
         return self.title
