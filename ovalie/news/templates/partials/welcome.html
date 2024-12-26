@@ -1,13 +1,13 @@
 {% load static %}
 <div
-  class="hero min-h-screen"
+  class="relative min-h-screen bg-fixed bg-cover bg-center" 
   style="background-image: url('{% static "images/rugbyphile.webp" %}');">
-  <div class="hero-overlay bg-opacity-70"></div>
-  <div class="hero-content text-neutral-content text-center">
+  <div class="absolute inset-0 bg-black bg-opacity-70"></div>
+  <div class="relative z-10 flex items-center justify-center text-neutral-content text-center h-full">
     <div class="max-w-md">
       <h1 class="mb-5 text-5xl font-bold">Hello there</h1>
       <p class="mb-5 text-white font-semibold">
-          Soyez les bienvenus dans cet écrin de distinction dédié à l’art de l’Ovale. Ici, nous cultivons avec soin l’élégance de l’actualité rugbystique, triant avec une finesse toute particulière les récits et chroniques dignes de figurer en ces lieux. Laissez vos sens s’enivrer d’une sélection savamment orchestrée, pensée pour l’esprit éclairé et l’âme passionnée
+        Soyez les bienvenus dans cet écrin de distinction dédié à l’art de l’Ovale. Ici, nous cultivons avec soin l’élégance de l’actualité rugbystique, triant avec une finesse toute particulière les récits et chroniques dignes de figurer en ces lieux. Laissez vos sens s’enivrer d’une sélection savamment orchestrée, pensée pour l’esprit éclairé et l’âme passionnée
       </p>
     </div>
   </div>
