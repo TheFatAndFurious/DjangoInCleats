@@ -1,36 +1,22 @@
 {% load static %}
+{% load custom_filters %}
+
 
 
 <section class="flex items-center justify-center min-h-screen">
   <div class="flex flex-col items-center space-y-6 mx-auto text-center">
-    <h2 class="text-2xl font-bold mb-4">
+    <h2 class="text-2xl font-bold my-4">
       L'Esprit des Lumières
     </h2>
-      <div class="grid grid-cols-3">
-    <div class="flex flex-col gap-y-2">
-        <h3>Videos a la une</h3>
- <iframe width="400" height="315" src="https://www.youtube.com/embed/NmfxvrPwLJI?si=FB3zoxvSzWFNWyNz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        <iframe width="400" height="315" src="https://www.youtube.com/embed/0c0hyUgxeZ0?si=fAS4CevBXmWgtroi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        <iframe width="400" height="315" src="https://www.youtube.com/embed/eh-E-xxyKw0?si=31CMJKIbCQSggVQ3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    </div>
-    <div>
-        <h3>Articles a la une</h3>
-            <div class="flex flex-col">
- {% for article in featured_articles %}
-<div class="card bg-base-100 image-full w-72 shadow-xl m-2">
-    <figure>
-        <img
-            src="{% if article.image %}{{ article.image.url }}{% elif article.keywords.first.image %}{{ article.keywords.first.image.url }}{% else %}{% static 'images/fallback.jpg' %}{% endif %}"
-            alt="{{ article.title }}" />
-    </figure>
-    <div class="card-body">
-        <p>{{ article.title }}</p>
-    </div>
-</div>
-{% endfor %}
+      <!-- GRID TO HANDLE POSITIONING OF ALL SECTIONS-->
+      <div class="grid grid-cols-1 md:grid-cols-3">
+          <!-- FEATURED ARTICLES SECTION -->
+{% include 'partials/section_news_links.html' %}
+{% include 'partials/section_featured_articles.html' %}
+{% include 'partials/section_videos.html' %}
 
-    </div>
-  </div>
+</div>
+
       </div>
     </div>
 </section>
