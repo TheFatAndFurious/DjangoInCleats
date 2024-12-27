@@ -3,11 +3,10 @@
 
 <!-- NEWS LINKS -->
           <div>
-              <h3>Les dernieres nouvelles</h3>
           <div hx-get="/" hx-target="#articles-container" hx-swap="innerHTML" hx-trigger="change from:select" hx-include="#team, #language">
         <div class="flex justify-between">
         <!-- TEAM SELECTOR -->
-        <select class="select select-primary w-full  max-w-xs" id="team" name="team">
+        <select class="select  select-sm w-full max-w-xs" id="team" name="team">
             <option selected value="all_teams">Toutes les equipes</option>
             {% for team in teams %}
                 <option value="{{ team.name }}">{{ team.name }}</option>
@@ -15,7 +14,7 @@
         </select>
 
         <!-- LANGUAGE SELECTOR -->
-        <select class="select select-primary  w-full max-w-xs" id="language" name="language">
+        <select class="select select-sm w-full max-w-xs" id="language" name="language">
             <option selected value="french">French</option>
             <option value="english">English</option>
             <option value="all_articles">Both</option>
@@ -46,7 +45,7 @@
                 <li class="px-2 mr-2 font-semibold rounded" style="background-color: {{ keyword_group.color }}">{{ keyword_group.name }}</li>
               {% endfor %}
             </ul>
-          <a href="{{ article.link }}" target="_blank" rel="noopener noreferrer">
+          <a href="{{ article.link }}" target="_blank" rel="noopener noreferrer" class="text-xs">
                 {{ article.title }}
             </a>
 

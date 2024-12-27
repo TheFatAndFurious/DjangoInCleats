@@ -4,19 +4,16 @@
 
 
 <section class="flex items-center justify-center min-h-screen">
-  <div class="flex flex-col items-center space-y-6 mx-auto text-center">
-    <h2 class="text-2xl font-bold my-4">
-      L'Esprit des Lumières
-    </h2>
+  <div class="flex flex-col items-center space-y-4 mx-auto text-center">
+    {% include 'partials/section_title.html' with title="Nouvelles du terrain" subtitle="Retrouvez ici les liens vers les derniers articles publiés sur les meilleurs sites de rugby mondiaux. Vous pouvez choisir de selectionner les articles par équipe et par langue." %}
+
       <!-- GRID TO HANDLE POSITIONING OF ALL SECTIONS-->
       <div class="grid grid-cols-1 md:grid-cols-3">
           <!-- FEATURED ARTICLES SECTION -->
-{% include 'partials/section_news_links.html' %}
-{% include 'partials/section_featured_articles.html' %}
-{% include 'partials/section_videos.html' %}
-
-</div>
+        {% include 'partials/section_news_links.html' %}
+        {% include 'partials/section_featured_articles.html' %}
+        {% include 'partials/section_videos.html' %}
 
       </div>
-    </div>
+  </div>
 </section>

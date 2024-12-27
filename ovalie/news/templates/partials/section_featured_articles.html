@@ -1,20 +1,23 @@
 {% load static %}
-
-
 <div>
-        <h3>Articles a la une</h3>
-            <div class="flex flex-col">
-                {% for article in featured_articles %}
-                <div class="card bg-base-100 image-full w-full shadow-xl my-2 mx-auto">
-                    <figure>
-                        <img
-                        src="{% if article.image %}{{ article.image.url }}{% elif article.keywords.first.image %}{{ article.keywords.first.image.url }}{% else %}{% static 'images/fallback.jpg' %}{% endif %}"
-                        alt="{{ article.title }}" />
-                    </figure>
-                    <div class="card-body">
-                        <p>{{ article.title }}</p>
-                    </div>
+    {% include 'partials/section_title.html' with title="La selection litteraire" subtitle="Une selection raffinée de la prose des plus grands écrivains de notre sport de poétes" %}
+    <div class="carousel carousel-center bg-neutral rounded-box max-w-md space-x-4 p-4">
+        {% for article in featured_articles %}
+        <div class="carousel-item relative">
+            <!-- Image with opacity -->
+            <a href="{{article.link}}">
+            <img
+              src="{% if article.image %}{{ article.image.url }}{% elif article.keywords.first.image %}{{ article.keywords.first.image.url }}{% else %}{% static 'images/fallback.jpg' %}{% endif %}"
+              class="rounded-box w-72 h-64 object-cover opacity-30 " />
+
+            <!-- Title overlay -->
+            <div class="absolute inset-0 flex items-center justify-center">
+                <div class="text-white text-center px-4 py-2 rounded">
+                    {{ article.title }}
                 </div>
-                {% endfor %}
             </div>
+                </a>
         </div>
+        {% endfor %}
+    </div>
+</div>
