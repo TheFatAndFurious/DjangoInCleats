@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Article, Website, KeywordGroup
+from .models import Article, Website, KeywordGroup, Videos
 
 
 class KeywordGroupInline(admin.TabularInline):
@@ -11,8 +11,12 @@ class KeywordGroupInline(admin.TabularInline):
 class ArticleAdmin(admin.ModelAdmin):
     inlines = [KeywordGroupInline]  # Add inline for editing keywords
     list_display = ('title', 'link', 'published_at', 'website', 'is_visible', 'is_featured', 'is_french_language', 'is_video', 'image')
-    list_filter = ('is_visible', 'is_featured', 'website', 'image')
+    list_filter = ('is_visible', 'is_featured', 'website')
     search_fields = ('title', 'website')
+
+@admin.register(Videos)
+class VideoAdmin(admin.ModelAdmin):
+    list_display = ('title', 'link', 'description', 'is_visible')
 
 
 @admin.register(Website)

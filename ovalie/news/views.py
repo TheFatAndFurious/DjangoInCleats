@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Article, KeywordGroup
+from .models import Article, KeywordGroup, Videos
 from django.core.paginator import Paginator
 
 
@@ -32,6 +32,8 @@ def home(request):
     # TODO: use the articles fetching method instead of fetching several times the same data
     featured_articles = Article.objects.prefetch_related('keywords').filter(is_featured=True).order_by('-published_at')[:3]
 
+    videos = Videos.objects.filter(is_visible=True).order_by('-published_at')
+
     # fetch TOP 14 teams
     teams = KeywordGroup.objects.filter(is_top14=True)
 
@@ -45,11 +47,13 @@ def home(request):
         return render(request, 'partials/articles_list_by_tag.html', {
             'page_obj': page_obj,
             'teams': teams,
+            'videos': videos,
             'featured_articles': featured_articles})
     else:
         return render(request, 'news/home.html', {
             'page_obj': page_obj,
             'teams': teams,
+            'videos': videos,
             'featured_articles': featured_articles})
 
 
