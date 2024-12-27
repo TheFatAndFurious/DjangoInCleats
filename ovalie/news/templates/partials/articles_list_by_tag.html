@@ -1,16 +1,20 @@
 {% load custom_filters %}
-<tbody id="articles-container">
-    {% for article in page_obj %}
+{% for article in page_obj %}
       <tr>
         <td><img class="max-h-12" src="{{ article.website.logo }}"></td>
         <td>
           <div class="flex flex-col">
+            <ul class="flex">
+              {% for keyword_group in article.keywords.all %}
+                <li class="px-2 mr-2 font-semibold rounded" style="background-color: {{ keyword_group.color }}">{{ keyword_group.name }}</li>
+              {% endfor %}
+            </ul>
           <a href="{{ article.link }}" target="_blank" rel="noopener noreferrer">
                 {{ article.title }}
-          </a>
+            </a>
+
           </div>
         </td>
         <td>{{ article.published_at|friendly_date }}</td>
       </tr>
-        {% endfor %}
-</tbody>
+{% endfor %}

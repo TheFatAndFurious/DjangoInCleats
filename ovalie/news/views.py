@@ -5,8 +5,8 @@ from django.core.paginator import Paginator
 
 def home(request):
     # fetch articles from the DB
-    team = request.GET.get('team')
-    language = request.GET.get('language')
+    team = request.GET.get('team', 'all_teams')
+    language = request.GET.get('language', 'french')
     articles = []
 
     # Here we are using params to filter articles by team
@@ -42,7 +42,7 @@ def home(request):
     page_obj = paginator.get_page(page_number)
 
     if request.headers.get('HX-Request'):
-        return render(request, 'partials/section_news_links.html', {
+        return render(request, 'partials/articles_list_by_tag.html', {
             'page_obj': page_obj,
             'teams': teams,
             'featured_articles': featured_articles})
