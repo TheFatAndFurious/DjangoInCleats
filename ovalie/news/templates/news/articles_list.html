@@ -99,13 +99,15 @@
                 <li class="px-2 mr-2 font-semibold rounded" style="background-color: {{ keyword_group.color }}">{{ keyword_group.name }}</li>
               {% endfor %}
             </ul>
-          <a href="{{ article.link }}" target="_blank" rel="noopener noreferrer">
+          <a href="{{ article.link }}" target="_blank" rel="noopener noreferrer" class="text-sm">
                 {{ article.title }}
             </a>
 
           </div>
         </td>
-        <td>{{ article.published_at|friendly_date }}</td>
+        <td>
+            <p class="text-sm">{{ article.published_at|friendly_date }}</p>
+        </td>
       </tr>
         {% endfor %}
     </tbody>

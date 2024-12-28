@@ -59,17 +59,17 @@
 
   <!-- Pagination Controls -->
 </div>
-<div class="pagination flex justify-center">
+<div class="join ">
   {% if page_obj.has_previous %}
-  <a href="?page=1">&laquo; First</a>
-  <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+    <a href="?page=1"><button class="btn join-item">&laquo; First</button></a>
+  <a href="?page={{ page_obj.previous_page_number }}"><button class="join-item btn">Previous</button></a>
   {% endif %}
-
-  <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
-
+    <button class="join-item btn disabled">{{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</button>
   {% if page_obj.has_next %}
-  <a href="?page={{ page_obj.next_page_number }}#articles">Next</a>
-  <a href="?page={{ page_obj.paginator.num_pages }}#articles">Last &raquo;</a>
+    <a href="?page={{ page_obj.next_page_number }}#articles"><button class="join-item btn">Next</button></a>
   {% endif %}
+        <a href="?page={{ page_obj.paginator.num_pages }}#articles"><button class="btn join-item">&raquo; Last</button></a>
+
 </div>
+
               </div>
