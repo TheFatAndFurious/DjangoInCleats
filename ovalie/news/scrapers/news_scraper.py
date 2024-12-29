@@ -116,7 +116,7 @@ def scrap_lequipe():
 
     for article in articles:
         title = article.get_text()
-        link = url + article["href"]
+        link = "https://www.lequipe.fr" + article["href"]
         save_article(title, link, "lequipe")
 
 # if __name__ == "__main__":

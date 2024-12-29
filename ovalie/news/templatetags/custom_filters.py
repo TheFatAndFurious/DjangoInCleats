@@ -14,7 +14,7 @@ def friendly_date(value):
 
     # Check if the day is today
     if value.date() == now.date():
-        return f"Aujourd'hui a {value.strftime('%H:%M')}"
+        return f"{value.strftime('%H:%M')}"
 
     # Check if the date is yesterday
     elif value.date() == (now - datetime.timedelta(days=1)).date():
