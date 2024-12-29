@@ -5,15 +5,15 @@
   <div class="flex flex-col items-center space-y-4 mx-auto text-center">
 
       <!-- GRID TO HANDLE POSITIONING OF ALL SECTIONS-->
-      <div class="grid grid-cols-1 md:grid-cols-3">
+      <div class="grid grid-cols-1 lg:grid-cols-3 ">
           <!-- FEATURED ARTICLES SECTION -->
-          <div class="order-2 md:order-1">
+          <div class="order-2 lg:order-1">
               {% include 'partials/section_featured_articles.html' %}
           </div>
-          <div class="order-1 md:order-2">
+          <div class="order-1 lg:order-2">
               {% include 'partials/section_news_links.html' %}
           </div>
-          <div class="order-3 md:order-3">
+          <div class="order-3 lg:order-3">
               {% include 'partials/section_videos.html' %}
           </div>
       </div>

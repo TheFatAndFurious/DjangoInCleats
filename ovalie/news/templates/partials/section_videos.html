@@ -1,7 +1,7 @@
 <!-- FEATURED VIDEOS SECTION -->
 <div class="flex flex-col">
-  {% include 'partials/section_title.html' with title="Vidéos à voir" subtitle="Ce qui se fait de mieux sur Youtube" %}
-  <div class="flex flex-col gap-y-2">
+  {% include 'partials/section_title.html' with title="Vidéos à voir" subtitle="Parcequ'une image vaut mille mots" %}
+  <div class="flex flex-col gap-y-2 px-6">
       {% for video in videos %}
         {% include 'partials/block_youtube.html' with link=video.link description=video.description  %}
       {% endfor %}

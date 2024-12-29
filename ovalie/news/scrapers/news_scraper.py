@@ -68,7 +68,7 @@ def scrap_rugbyrama():
 
     for article in articles:
         title = article.get_text()
-        link = article['href']
+        link = url + article['href']
         save_article(title, link, 'rugbyrama')
 
 def scrap_rugbynistere():
@@ -116,8 +116,8 @@ def scrap_lequipe():
 
     for article in articles:
         title = article.get_text()
-        link = article["href"]
+        link = url + article["href"]
         save_article(title, link, "lequipe")
 
-if __name__ == "__main__":
-    run_all_scrapers()
+# if __name__ == "__main__":
+#     run_all_scrapers()
