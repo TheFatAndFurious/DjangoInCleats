@@ -39,12 +39,12 @@ def home(request):
 
 
     #pagination
-    paginator = Paginator(articles, 25)
+    paginator = Paginator(articles, 20)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
     if request.headers.get('HX-Request'):
-        return render(request, 'partials/articles_list_by_tag.html', {
+        return render(request, 'partials/block_news_list.html', {
             'page_obj': page_obj,
             'teams': teams,
             'videos': videos,

@@ -1,0 +1,21 @@
+{% load custom_filters %}
+
+{% for article in page_obj %}
+      <tr>
+        <td><img class="h-full" src="{{ article.website.logo }}"></td>
+        <td>
+          <div class="flex flex-col">
+            <ul class="flex">
+              {% for keyword_group in article.keywords.all %}
+                <li class="px-2 mr-2 font-semibold text-xs text-white rounded" style="background-color: {{ keyword_group.color }}">{{ keyword_group.name }}</li>
+              {% endfor %}
+            </ul>
+          <a href="{{ article.link }}" target="_blank" rel="noopener noreferrer" class="text-sm pt-2 font-medium">
+                {{ article.title }}
+            </a>
+
+          </div>
+        </td>
+        <td>{{ article.published_at|friendly_date }}</td>
+      </tr>
+{% endfor %}
