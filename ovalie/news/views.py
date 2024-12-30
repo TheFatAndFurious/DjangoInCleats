@@ -2,6 +2,8 @@ from django.shortcuts import render
 from .models import Article, KeywordGroup, Videos
 from django.core.paginator import Paginator
 
+def about(request):
+    return render(request, 'news/about.html')
 
 def home(request):
     # fetch articles from the DB
