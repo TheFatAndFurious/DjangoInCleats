@@ -30,7 +30,7 @@ def home(request):
 
     # fetch featured articles
     # TODO: use the articles fetching method instead of fetching several times the same data
-    featured_articles = Article.objects.prefetch_related('keywords').filter(is_featured=True).order_by('-published_at')[:3]
+    featured_articles = Article.objects.prefetch_related('keywords').filter(is_featured=True).order_by('-published_at')[:10]
 
     videos = Videos.objects.filter(is_visible=True).order_by('-published_at')
 

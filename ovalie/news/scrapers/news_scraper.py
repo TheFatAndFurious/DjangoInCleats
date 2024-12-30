@@ -108,6 +108,8 @@ def scrap_rugbypass():
         link = article["href"]
         save_article(title, link, "rugbypass", False)
 
+
+
 def scrap_lequipe():
     url = "https://www.lequipe.fr/Rugby/"
     response = requests.get(url)
