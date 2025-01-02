@@ -97,6 +97,7 @@ def scrap_acturugby():
         linktosave = link['href']
         save_article(title, linktosave, "dicodusport")
 
+
 def scrap_rugbypass():
     url = "https://www.rugbypass.com/global/"
     response = requests.get(url)
@@ -104,10 +105,15 @@ def scrap_rugbypass():
     articles = soup.find_all("a", class_="link-box")
 
     for article in articles:
-        title = article["aria-label"]
-        link = article["href"]
-        save_article(title, link, "rugbypass", False)
+        # print(f"Processing article: {article}")
 
+        title = article.get("aria-label")
+        link = article.get("href")
+
+        if title and link:
+            save_article(title, link, "rugbypass", False)
+        else:
+            print(f"Skipping article due to missing 'aria-label' or 'href': {article}")
 
 
 def scrap_lequipe():

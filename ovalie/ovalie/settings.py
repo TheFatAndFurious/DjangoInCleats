@@ -139,7 +139,7 @@ Q_CLUSTER = {
     'workers': 4,
     'timeout': 120,
     'retry': 300,
-    'queue_limit': 50,
+    'queue_limit': 5,
     'bulk': 10,
     'orm': 'default'
 }
