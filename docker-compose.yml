@@ -1,0 +1,8 @@
+services:
+  web:
+    build: .
+    container_name: my_django_app
+    ports:
+      - "8000:8000"      # Host port : Container port
+    volumes:
+      - ./ovalie/db.sqlite3:/app/db.sqlite3
