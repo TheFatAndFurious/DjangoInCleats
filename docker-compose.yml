@@ -1,9 +1,14 @@
 services:
   web:
     build: .
-    command:
     container_name: my_django_app
     ports:
-      - "8000:8000"      # Host port : Container port
+      - "8000:8000"
     volumes:
       - ./ovalie/db.sqlite3:/app/db.sqlite3
+
+  worker:
+    build: .
+    command: bash -c "python ovalie/manage.py qcluster"
+    volumes:
+      - .:/app
