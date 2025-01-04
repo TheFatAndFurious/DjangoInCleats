@@ -11,4 +11,4 @@ services:
     build: .
     command: bash -c "python ovalie/manage.py qcluster"
     volumes:
-      - .:/app
+      - ./ovalie/db.sqlite3:/app/db.sqlite3
