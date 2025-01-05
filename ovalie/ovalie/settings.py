@@ -142,7 +142,7 @@ NPM_BIN_PATH = '/usr/bin/npm'
 
 Q_CLUSTER = {
     'name': 'news_scrapers',
-    'workers': 4,
+    'workers': 1,
     'timeout': 120,
     'retry': 300,
     'queue_limit': 5,

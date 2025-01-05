@@ -6,9 +6,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Le rugbyphile{% endblock %}</title>
+    <meta name="description" content="L'agrégateur de news rugby qui fait chuter ta productivité au travail de 80% mais qui te transfome en savant du rugby">
+    <link rel="icon" href="{% static "favicon.ico" %}" type="image/x-icon">
+    <title>{% block title %}{% endblock %}</title>
     {% tailwind_css %}
     <script src="{% static 'js/htmx.min.js' %}" defer></script>
+
 </head>
 <body>
     <header class="sticky top-0 z-50">
