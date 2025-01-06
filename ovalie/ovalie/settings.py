@@ -149,3 +149,8 @@ Q_CLUSTER = {
     'bulk': 10,
     'orm': 'default'
 }
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://mathieu-baro.com",
+    "https://www.mathieu-baro.com",
+]
