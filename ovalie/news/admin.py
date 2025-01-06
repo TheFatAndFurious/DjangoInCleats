@@ -21,7 +21,7 @@ class VideoAdmin(admin.ModelAdmin):
 
 @admin.register(Website)
 class WebsiteAdmin(admin.ModelAdmin):
-    list_display = ('name', 'url', 'logo')
+    list_display = ('name', 'url', 'logo', 'banner')
 
 
 @admin.register(KeywordGroup)
