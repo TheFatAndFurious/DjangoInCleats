@@ -48,5 +48,7 @@ class Videos(models.Model):
     published_at = models.DateTimeField(auto_now_add=True)
     is_visible = models.BooleanField(default=False)
     description = models.CharField(max_length=255, blank=True)
+    categories = models.ManyToManyField(VideoCategory, blank=True)
+
     def __str__(self):
         return self.title
