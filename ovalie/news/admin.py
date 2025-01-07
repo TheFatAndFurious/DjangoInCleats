@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Article, Website, KeywordGroup, Videos
+from .models import Article, Website, KeywordGroup, Videos, VideoCategory
 
 
 class KeywordGroupInline(admin.TabularInline):
@@ -23,6 +23,9 @@ class VideoAdmin(admin.ModelAdmin):
 class WebsiteAdmin(admin.ModelAdmin):
     list_display = ('name', 'url', 'logo', 'banner')
 
+@admin.register(VideoCategory)
+class VideoCategoryAdmin(admin.ModelAdmin):
+    list_display = ('category', 'image', 'created_at')
 
 @admin.register(KeywordGroup)
 class KeywordAdmin(admin.ModelAdmin):

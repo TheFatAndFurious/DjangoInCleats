@@ -34,6 +34,14 @@ class Article(models.Model):
     def __str__(self):
         return self.title
 
+class VideoCategory(models.Model):
+    category = models.CharField(max_length=150, unique=True)
+    image = models.ImageField(upload_to='static/news/images/video_categories', null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.category
+
 class Videos(models.Model):
     title = models.CharField(max_length=255, blank=True)
     link = models.URLField(unique=True)
