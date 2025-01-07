@@ -49,6 +49,7 @@ class Videos(models.Model):
     is_visible = models.BooleanField(default=False)
     description = models.CharField(max_length=255, blank=True)
     categories = models.ManyToManyField(VideoCategory, blank=True)
+    channel = models.CharField(max_length=150, blank=True)
 
     def __str__(self):
         return self.title
