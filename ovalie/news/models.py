@@ -46,7 +46,7 @@ class Videos(models.Model):
     title = models.CharField(max_length=255, blank=True)
     link = models.URLField(unique=True)
     published_at = models.DateTimeField(auto_now_add=True)
-    is_visible = models.BooleanField(default=False)
+    is_visible = models.BooleanField(default=True)
     description = models.CharField(max_length=255, blank=True)
     categories = models.ManyToManyField(VideoCategory, blank=True)
     channel = models.CharField(max_length=150, blank=True)
