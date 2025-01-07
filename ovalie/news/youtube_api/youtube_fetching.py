@@ -1,3 +1,5 @@
+from unicodedata import category
+
 import django
 import requests
 import os, sys
@@ -8,8 +10,14 @@ django.setup()
 
 from news.models import Videos
 
-
+RUGBYPASSFR_CHANNEL_ID = "UC8yDQBIfghpQCrJufJCGmIA"
+URC_CHANNEL_ID = "UC-S6cXyil4qbIPfb2hrcH4w"
+TOP14_CHANNEL_ID = "UCWrD2VhZdO-_W8QDBxiXmeg"
+PROD2_CHANNEL_ID = "UCu98ro1AIOu-4wtZxDRS6Tg"
 UP_RUGBY_CHANNEL_ID = "UCpH-VFo4_F2oMYiW8942mQw"
+
+links = [RUGBYPASSFR_CHANNEL_ID, UP_RUGBY_CHANNEL_ID, TOP14_CHANNEL_ID, PROD2_CHANNEL_ID, UP_RUGBY_CHANNEL_ID]
+
 API_KEY = "AIzaSyAaBWQgnLvxuGR4gdDBPOzBMfgmLTLl0V4"
 
 
@@ -33,18 +41,31 @@ def save_videos(videos):
 
 
 def get_uploads(api_key, channel_id, max_results=5):
-    url = f"https://www.googleapis.com/youtube/v3/search?key={api_key}&channelId={channel_id}&part=snippet&type=video&order=date&maxResults={max_results}"
+    url = f"https://www.googleapis.com/youtube/v3/search?key={api_key}&channelId={channel_id}&part=snippet&type=video&order=date&videoEmbeddable=true&maxResults={max_results}"
     response = requests.get(url)
     data = response.json()
     videos = []
 
     # Here we will construct an array containing the last 5 videos from the channel
     # If for whatever reason no link is provided for an item then we will skip that item
+    category = ''
+    match channel_id:
+        case "UCWrD2VhZdO-_W8QDBxiXmeg":
+            category = 'top14'
+        case "UCu98ro1AIOu-4wtZxDRS6Tg":
+            category ='prod2'
+        case "UCpH-VFo4_F2oMYiW8942mQw":
+            category = 'uprugby'
+        case "UC8yDQBIfghpQCrJufJCGmIA":
+            category = 'rugbypass'
+
     for item in data.get('items', []):
+
         video_id = item.get('id', {}).get('videoId')
         if not video_id:
             continue
-
+        if item.get('status', {}).get('embeddable', False):
+            continue
         description = item.get('snippet', {}).get('description', None)
         title = item.get('snippet', {}).get('title', None)
         channel = item.get('snippet', {}).get('channelTitle', None)
@@ -56,10 +77,12 @@ def get_uploads(api_key, channel_id, max_results=5):
             'title': title,
             'description': description,
             'link': link,
-            'channel': channel
+            'channel': channel,
+            'categories': category
         })
     save_videos(videos)
 
+for link in links:
 
-get_uploads(API_KEY, UP_RUGBY_CHANNEL_ID)
+    get_uploads(API_KEY, link)
 

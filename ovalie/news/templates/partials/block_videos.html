@@ -1,0 +1,3 @@
+{% for video in videos %}
+        {% include 'partials/block_youtube.html' with link=video.link description=video.description  %}
+{% endfor %}

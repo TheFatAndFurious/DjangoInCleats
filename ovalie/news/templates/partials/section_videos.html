@@ -1,10 +1,17 @@
 <!-- FEATURED VIDEOS SECTION -->
 <div class="flex flex-col">
   {% include 'partials/section_title.html' with title="Vidéos à voir" subtitle="Parcequ'une image vaut mille mots" %}
-  <div class="flex flex-col gap-y-2 px-6">
-      {% for video in videos %}
-        {% include 'partials/block_youtube.html' with link=video.link description=video.description  %}
-      {% endfor %}
+    <div hx-get="/" hx-target="#videos-container" hx-swap="innerHTML" hx-trigger="change" hx-include="#videos" class="mt-4">
+<!--  SELECTEUR DE CATEGORIES VIDEOS-->
+        <select class="select select-bordered w-full max-w-xs" id="videos" name="videos">
+            <option selected value="top14">Toutes les équipes</option>
+                <option value="top14">TOP 14</option>
+                <option value="prod2">PRO D2</option>
+        </select>
+   </div>
+<!--    AFFICHAGE DES VIDEOS-->
+    <div class="flex flex-col gap-y-2 px-6 my-6" id="videos-container">
+      {% include 'partials/block_videos.html'%}
   </div>
 </div>
 

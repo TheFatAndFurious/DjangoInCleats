@@ -9,6 +9,7 @@ def home(request):
     # fetch articles from the DB
     team = request.GET.get('team', 'all_teams')
     language = request.GET.get('language', 'french')
+    videos = request.GET.get('videos', 'top14')
     articles = []
 
     # Here we are using params to filter articles by team
@@ -34,7 +35,7 @@ def home(request):
     # TODO: use the articles fetching method instead of fetching several times the same data
     featured_articles = Article.objects.prefetch_related('keywords').filter(is_featured=True).order_by('-published_at')[:10]
 
-    videos = Videos.objects.filter(is_visible=True).order_by('-published_at')
+    selected_videos = Videos.objects.filter(is_visible=True).filter(categories__category=videos).order_by('-published_at')[:5]
 
     # fetch TOP 14 teams
     teams = KeywordGroup.objects.filter(is_top14=True)
@@ -45,17 +46,25 @@ def home(request):
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
-    if request.headers.get('HX-Request'):
+    if request.headers.get('Hx-Target') == 'articles-container':
+        print(f"requete d'articles")
+        print(request.headers.get('Hx-Target'))
         return render(request, 'partials/block_news_list.html', {
             'page_obj': page_obj,
-            'teams': teams,
-            'videos': videos,
-            'featured_articles': featured_articles})
+            'teams': teams
+        })
+    elif request.headers.get('Hx-Target') == 'videos-container':
+        print(f"requete de videos")
+        print(request.headers.get('Hx-Target'))
+        return render(request, 'partials/block_videos.html', {
+            'videos': selected_videos
+        })
     else:
+        print(f"requete de page complete")
         return render(request, 'news/home.html', {
             'page_obj': page_obj,
             'teams': teams,
-            'videos': videos,
+            'videos': selected_videos,
             'featured_articles': featured_articles})
 
 
