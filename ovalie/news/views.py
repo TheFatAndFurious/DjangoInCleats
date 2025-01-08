@@ -9,6 +9,7 @@ def about(request):
 def home(request):
     # fetch articles from the DB
     team = request.GET.get('team', 'all_teams')
+    print(team)
     language = request.GET.get('language', 'french')
     videos = request.GET.get('videos', 'top14')
     articles = ArticleService.filter_articles(team,language)
@@ -33,21 +34,16 @@ def home(request):
     page_obj = paginator.get_page(page_number)
 
     if request.headers.get('Hx-Target') == 'articles-container':
-        print(f"requete d'articles")
-        print(request.headers.get('Hx-Target'))
         return render(request, 'partials/block_news_list.html', {
             'page_obj': page_obj,
             'teams': teams
         })
     elif request.headers.get('Hx-Target') == 'videos-container':
-        print(f"requete de videos")
-        print(request.headers.get('Hx-Target'))
         return render(request, 'partials/block_videos.html', {
             'videos': selected_videos
         })
     else:
-        print(f"requete de page complete")
-        return render(request, 'news/home.html', {
+            return render(request, 'news/home.html', {
             'page_obj': page_obj,
             'teams': teams,
             'videos': selected_videos,

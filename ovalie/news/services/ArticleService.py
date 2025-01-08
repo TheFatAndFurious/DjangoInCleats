@@ -19,9 +19,8 @@ class ArticleService:
             filters &= Q(is_french_language=False)
 
         if team == 'top14':
-            filters &= Q(keywords__is_top14=False)
-
-        if team != 'all_teams':
+            filters &= Q(keywords__is_top14=True)
+        elif team != 'all_teams':
             filters &= Q(keywords__name__iexact=team)
 
         return Article.objects.filter(filters).prefetch_related('keywords').order_by('-published_at')
