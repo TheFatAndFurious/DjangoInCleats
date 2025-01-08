@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Article, KeywordGroup, Videos
 from django.core.paginator import Paginator
+from .services.ArticleService import ArticleService
 
 def about(request):
     return render(request, 'news/about.html')
@@ -10,26 +11,11 @@ def home(request):
     team = request.GET.get('team', 'all_teams')
     language = request.GET.get('language', 'french')
     videos = request.GET.get('videos', 'top14')
-    articles = []
+    articles = ArticleService.filter_articles(team,language)
 
     # Here we are using params to filter articles by team
     # if the 'team' value being received is equals to 'all_teams' then we will fetch all articles regardless of teams
-    if team == 'all_teams':
-        match language:
-            case "french":
-                articles = Article.objects.filter(is_french_language=True).prefetch_related('keywords').order_by('-published_at')
-            case "english":
-                articles = Article.objects.filter(is_french_language=False).prefetch_related('keywords').order_by('-published_at')
-            case "all_articles":
-                articles = Article.objects.prefetch_related('keywords').order_by('-published_at')
-    else:
-        match language:
-            case "french":
-                articles = Article.objects.filter(keywords__name__iexact=team).filter(is_french_language=True).distinct().order_by('-published_at')
-            case "english":
-                articles = Article.objects.filter(keywords__name__iexact=team).filter(is_french_language=False).distinct().order_by('-published_at')
-            case "all_articles":
-                articles = Article.objects.filter(keywords__name__iexact=team).distinct().order_by('-published_at')
+
 
     # fetch featured articles
     # TODO: use the articles fetching method instead of fetching several times the same data

@@ -11,10 +11,12 @@
         <div class="flex justify-between space-x-4 mt-4 px-2">
     <!-- TEAM SELECTOR -->
                 <select class="select select-bordered w-full max-w-xs" id="team" name="team">
-                    <option selected value="all_teams">Toutes les équipes</option>
+                    <option selected value="all_teams">Toutes les news</option>
+                    <option value="top14" class="text-bold">Top 14</option>
                     {% for team in teams %}
                         <option value="{{ team.name }}">{{ team.name }}</option>
                     {% endfor %}
+                    <option value="prod2">Pro D2</option>
                 </select>
 
     <!-- LANGUAGE SELECTOR -->

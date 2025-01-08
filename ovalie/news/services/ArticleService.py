@@ -1,0 +1,27 @@
+import os
+import sys
+
+import django
+from django.db.models import Q
+sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ovalie.settings')
+django.setup()
+from news.models import Article
+
+class ArticleService:
+    @staticmethod
+    def filter_articles(team: str, language: str):
+        filters = Q()
+
+        if language == 'french':
+            filters &= Q(is_french_language=True)
+        elif language =='english':
+            filters &= Q(is_french_language=False)
+
+        if team == 'top14':
+            filters &= Q(keywords__is_top14=False)
+
+        if team != 'all_teams':
+            filters &= Q(keywords__name__iexact=team)
+
+        return Article.objects.filter(filters).prefetch_related('keywords').order_by('-published_at')
