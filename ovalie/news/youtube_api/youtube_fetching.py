@@ -71,7 +71,7 @@ def get_uploads(api_key, channel_id, max_results=5):
         channel = item.get('snippet', {}).get('channelTitle', None)
 
         # Building the video link before saving it
-        link = f"http://www.youtube.com/embed/{video_id}"
+        link = f"https://www.youtube.com/embed/{video_id}"
 
         videos.append({
             'title': title,
