@@ -37,7 +37,7 @@ ALLOWED_HOSTS = [
     'mathieu-baro.com',
     'www.mathieu-baro.com',
     '87.106.165.139',
-    'www.paparugby.com'
+    'www.paparugby.com',
     'paparugby.com'
 ]
 
