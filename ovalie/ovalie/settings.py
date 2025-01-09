@@ -11,15 +11,22 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import os
+import environ
+
+env = environ.Env(
+    DEBUG=(bool, False)
+)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+environ.Env.read_env((os.path.join(BASE_DIR, '.env')))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-gvaoo(y^6og#_3z^s5q*g(wp)e6_uig3ywwk_3jkn#@7s8y&qy'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -29,7 +36,9 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     'mathieu-baro.com',
     'www.mathieu-baro.com',
-    '87.106.165.139'
+    '87.106.165.139',
+    'www.paparugby.com'
+    'paparugby.com'
 ]
 
 # Application definition
@@ -85,7 +94,7 @@ WSGI_APPLICATION = 'ovalie.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': BASE_DIR / '/app/db.sqlite3',
     }
 }
 
@@ -153,4 +162,6 @@ Q_CLUSTER = {
 CSRF_TRUSTED_ORIGINS = [
     "https://mathieu-baro.com",
     "https://www.mathieu-baro.com",
+    "https://www.paparugby.com",
+    "https://paparugby.com"
 ]
