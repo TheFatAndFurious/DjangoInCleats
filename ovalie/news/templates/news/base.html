@@ -13,6 +13,15 @@
     <script src="{% static 'js/htmx.min.js' %}" defer></script>
 
 </head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z1F6M6N5DC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Z1F6M6N5DC');
+</script>
 <body>
     <header class="sticky top-0 z-50">
         {% include 'partials/header.html' %}
