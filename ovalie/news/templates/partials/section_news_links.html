@@ -33,34 +33,43 @@
 
 
 <!--Liste des liens vers les autres sites-->
-<div class="flex flex-col justify-center items-center overflow-x-auto mx-auto my-6" id="articles">
-  <table class="table table-zebra table-pin-cols">
-    <!-- head -->
-    <thead>
-      <tr>
-        <th>Site</th>
-        <th>Titre</th>
-        <th>Publication</th>
-      </tr>
-    </thead>
-    <tbody id="articles-container" class="w-screen">
-      {% include 'partials/block_news_list.html' %}
-    </tbody>
-  </table>
+<div class="flex flex-col justify-center items-center mx-auto my-6" id="articles">
+  <div class="overflow-x-auto w-full">
+    <table class="table table-zebra table-pin-cols w-full">
+      <!-- Table Head -->
+      <thead>
+        <tr>
+          <th class="text-sm">Site</th>
+          <th class="text-sm">Titre</th>
+          <th class="hidden md:flex lg:h-full text-sm">Publication</th>
+        </tr>
+      </thead>
+      <!-- Table Body -->
+      <tbody id="articles-container">
+        {% include 'partials/block_news_list.html' %}
+      </tbody>
+    </table>
+  </div>
 
   <!-- Pagination Controls -->
-</div>
-<div class="join ">
-  {% if page_obj.has_previous %}
-    <a href="?page=1"><button class="btn join-item">&laquo; First</button></a>
-  <a href="?page={{ page_obj.previous_page_number }}"><button class="join-item btn">Previous</button></a>
-  {% endif %}
+  <div class="join mt-4">
+    {% if page_obj.has_previous %}
+      <a href="?page=1">
+        <button class="btn join-item">&laquo; First</button>
+      </a>
+      <a href="?page={{ page_obj.previous_page_number }}">
+        <button class="join-item btn">Previous</button>
+      </a>
+    {% endif %}
     <button class="join-item btn disabled">{{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</button>
-  {% if page_obj.has_next %}
-    <a href="?page={{ page_obj.next_page_number }}#articles"><button class="join-item btn">Next</button></a>
-  {% endif %}
-        <a href="?page={{ page_obj.paginator.num_pages }}#articles"><button class="btn join-item">&raquo; Last</button></a>
-
+    {% if page_obj.has_next %}
+      <a href="?page={{ page_obj.next_page_number }}#articles">
+        <button class="join-item btn">Next</button>
+      </a>
+    {% endif %}
+    <a href="?page={{ page_obj.paginator.num_pages }}#articles">
+      <button class="btn join-item">&raquo; Last</button>
+    </a>
+  </div>
 </div>
-
-              </div>
+      </div>
