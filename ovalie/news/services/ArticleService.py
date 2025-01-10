@@ -19,7 +19,9 @@ class ArticleService:
             filters &= Q(is_french_language=False)
 
         if team == 'top14':
-            filters &= Q(keywords__is_top14=True)
+            filters &= Q(keywords__league='top14')
+        elif team == 'prod2':
+            filters &= Q(keywords__league='prod2')
         elif team != 'all_teams':
             filters &= Q(keywords__name__iexact=team)
 

@@ -25,8 +25,9 @@ def home(request):
 
     selected_videos = Videos.objects.filter(is_visible=True).filter(categories__category=videos).order_by('-published_at')[:5]
 
-    # fetch TOP 14 teams
-    teams = KeywordGroup.objects.filter(is_top14=True)
+    # fetch teams
+    top14_teams = KeywordGroup.objects.filter(league='top14')
+    prod2_teams = KeywordGroup.objects.filter(league='prod2')
 
 
     #pagination
@@ -37,7 +38,8 @@ def home(request):
     if request.headers.get('Hx-Target') == 'articles-container':
         return render(request, 'partials/block_news_list.html', {
             'page_obj': page_obj,
-            'teams': teams
+            'top14_teams': top14_teams,
+            'prod2_teams': prod2_teams
         })
     elif request.headers.get('Hx-Target') == 'videos-container':
         return render(request, 'partials/block_videos.html', {
@@ -46,7 +48,8 @@ def home(request):
     else:
             return render(request, 'news/home.html', {
             'page_obj': page_obj,
-            'teams': teams,
+            'top14_teams': top14_teams,
+            'prod2_teams': prod2_teams,
             'videos': selected_videos,
             'featured_articles': featured_articles})
 

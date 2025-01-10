@@ -12,11 +12,14 @@
     <!-- TEAM SELECTOR -->
                 <select class="select select-bordered w-full max-w-xs" id="team" name="team">
                     <option selected value="all_teams">Toutes les news</option>
-                    <option value="top14" class="text-bold">Top 14</option>
-                    {% for team in teams %}
+                    <option value="top14">Top 14</option>
+                    {% for team in top14_teams %}
                         <option value="{{ team.name }}">{{ team.name }}</option>
                     {% endfor %}
                     <option value="prod2">Pro D2</option>
+                    {% for team in prod2_teams %}
+                        <option value="{{ team.name }}">{{ team.name }}</option>
+                    {% endfor %}
                 </select>
 
     <!-- LANGUAGE SELECTOR -->

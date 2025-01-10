@@ -29,4 +29,4 @@ class VideoCategoryAdmin(admin.ModelAdmin):
 
 @admin.register(KeywordGroup)
 class KeywordAdmin(admin.ModelAdmin):
-    list_display = ('name', 'keywords', 'is_top14', 'image', 'color')
+    list_display = ('name', 'keywords', 'league', 'is_top14', 'image', 'color')
