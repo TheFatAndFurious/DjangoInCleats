@@ -1,8 +1,8 @@
 {% load custom_filters %}
 
 {% for article in page_obj %}
-      <tr>
-        <td><img class="h-full" src="{{ article.website.logo }}"></td>
+      <tr class="h-28">
+        <td><img class="w-16 h-16 object-cover rounded border border-gray-300 max-w-none" src="{{ article.website.logo }}"></td>
         <td>
           <div class="flex flex-col">
             <ul class="flex">
