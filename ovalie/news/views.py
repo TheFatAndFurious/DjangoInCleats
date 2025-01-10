@@ -9,11 +9,12 @@ def about(request):
 def home(request):
     # fetch articles from the DB
     team = request.GET.get('team', 'all_teams')
+    print(f"coucou")
     print(team)
     language = request.GET.get('language', 'french')
     videos = request.GET.get('videos', 'top14')
     articles = ArticleService.filter_articles(team,language)
-
+    print(articles)
     # Here we are using params to filter articles by team
     # if the 'team' value being received is equals to 'all_teams' then we will fetch all articles regardless of teams
 
