@@ -6,7 +6,8 @@ services:
       - "8000:8000"
     volumes:
       - ./ovalie/db.sqlite3:/app/db.sqlite3
-
+    env_file:
+      - ovalie/.env
   worker:
     build: .
     command: bash -c "python ovalie/manage.py qcluster"

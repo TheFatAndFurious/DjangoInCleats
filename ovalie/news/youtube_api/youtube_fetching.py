@@ -82,7 +82,10 @@ def get_uploads(api_key, channel_id, max_results=5):
         })
     save_videos(videos)
 
-for link in links:
 
-    get_uploads(API_KEY, link)
+def fetch_videos():
+    for link in links:
+        get_uploads(API_KEY, link)
 
+if __name__ == "__main__":
+    fetch_videos()
