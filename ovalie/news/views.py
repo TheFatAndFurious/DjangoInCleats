@@ -23,7 +23,7 @@ def home(request):
     # TODO: use the articles fetching method instead of fetching several times the same data
     featured_articles = Article.objects.prefetch_related('keywords').filter(is_featured=True).order_by('-published_at')[:10]
 
-    selected_videos = Videos.objects.filter(is_visible=True).filter(categories__category=videos).order_by('-published_at')[:5]
+    selected_videos = Videos.objects.filter(is_visible=True).order_by('-published_at')[:5]
 
     # fetch teams
     top14_teams = KeywordGroup.objects.filter(league='top14')
