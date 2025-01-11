@@ -8,7 +8,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ovalie.settings')
 django.setup()
 
-from news.models import Videos
+from news.models import Videos, VideoCategory
 
 RUGBYPASSFR_CHANNEL_ID = "UC8yDQBIfghpQCrJufJCGmIA"
 URC_CHANNEL_ID = "UC-S6cXyil4qbIPfb2hrcH4w"
@@ -22,23 +22,46 @@ API_KEY = "AIzaSyAaBWQgnLvxuGR4gdDBPOzBMfgmLTLl0V4"
 
 
 def save_videos(videos):
+    # Get existing video links to avoid duplicates
     existing_links = set(Videos.objects.values_list('link', flat=True))
 
+    # Create video objects for new videos
     videos_objects = [
         Videos(
-            title = video.get('title'),
-            description = video.get('description'),
-            link = video['link'],
-            channel = video.get('channel'),
-            categories = video.get('categories')
+            title=video.get('title'),
+            description=video.get('description'),
+            link=video['link'],
+            channel=video.get('channel'),
         )
         for video in videos if video['link'] not in existing_links
     ]
 
+    # Bulk create new videos
     if videos_objects:
         Videos.objects.bulk_create(videos_objects)
 
+    # Print the number of new videos added
     print(f"{len(videos_objects)} new videos added to the database")
+
+    # Handle categories (Many-to-Many relationship)
+    for video in videos:
+        if video['link'] not in existing_links:  # Only handle newly added videos
+            # Retrieve the video object
+            video_obj = Videos.objects.get(link=video['link'])
+
+            # Split and handle categories (if multiple categories are possible)
+            categories = video.get('categories', '').split(',')
+            for category_name in categories:
+                if category_name.strip():  # Avoid empty category names
+                    # Get or create the category
+                    category_obj, created = VideoCategory.objects.get_or_create(name=category_name.strip())
+
+                    # Add the category to the video
+                    video_obj.categories.add(category_obj)
+
+            # Save the video object (not strictly necessary for Many-to-Many updates)
+            video_obj.save()
+
 
 
 def get_uploads(api_key, channel_id, max_results=5):
