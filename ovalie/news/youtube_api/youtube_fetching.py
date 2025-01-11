@@ -54,7 +54,7 @@ def save_videos(videos):
             for category_name in categories:
                 if category_name.strip():  # Avoid empty category names
                     # Get or create the category
-                    category_obj, created = VideoCategory.objects.get_or_create(name=category_name.strip())
+                    category_obj, created = VideoCategory.objects.get_or_create(category=category_name.strip())
 
                     # Add the category to the video
                     video_obj.categories.add(category_obj)
