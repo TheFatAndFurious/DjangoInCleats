@@ -3,7 +3,7 @@
 
 <!-- NEWS LINKS -->
     <!--    SECTION TITLE-->
-      <div>
+      <div class="md:w-2/3 mx-auto">
           {% include 'partials/section_title.html' with title="Nouvelles du terrain" subtitle="Retrouvez ici les liens vers les derniers articles publiés sur les meilleurs sites de rugby mondiaux. Vous pouvez choisir de selectionner les articles par équipe et par langue." %}
           <div hx-get="/" hx-target="#articles-container" hx-swap="innerHTML" hx-trigger="change from:select" hx-include="#team, #language" hx-indicator="#spinner">
 
@@ -34,14 +34,14 @@
 <!--Liste des liens vers les autres sites-->
 
 <div class="flex flex-col justify-center items-center mx-auto my-6" id="articles">
-  <div class="overflow-x-auto w-full" id="test">
+  <div class="overflow-x-hidden" id="test">
     <table class="table table-zebra table-pin-cols w-full">
       <!-- Table Head -->
       <thead>
         <tr>
           <th class="text-sm">Site</th>
           <th class="text-sm">Titre</th>
-          <th class="hidden md:flex lg:h-full text-sm">Publication</th>
+          <th class="hidden lg:flex lg:h-full text-sm">Publication</th>
         </tr>
       </thead>
       <!-- Table Body -->

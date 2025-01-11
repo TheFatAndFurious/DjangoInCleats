@@ -5,7 +5,7 @@
     <!--CAROUSEL THAT IS ONLY ACTIVE UNTIL WE REACH MD BREAKPOINT-->
     <div class="carousel carousel-center bg-neutral rounded-box max-w-md space-x-4 p-4 md:hidden">
         {% for article in featured_articles %}
-        <div class="carousel-item relative">
+        <div class="carousel-item relative border-2 rounded">
             <!-- Image with opacity -->
             <a href="{{article.link}}">
             <img
@@ -14,8 +14,9 @@
 
             <!-- Title overlay -->
             <div class="absolute inset-0 flex items-center justify-center">
-                <div class="text-white text-center px-4 py-2 rounded">
-                    {{ article.title }}
+                <div class="text-white text-center px-4 py-2 rounded font-semibold">
+                    <p class="font-semibold">{{ article.title }}</p>
+                    <p class="text-xs mt-2">{{article.published_at}}</p>
                 </div>
             </div>
 
@@ -33,21 +34,26 @@
     </div>
 
     <!-- SECTION ONLY VISIBLE AT THE MD BREAKPOINT -->
-    <div class="hidden md:flex flex-col">
+    <div class="hidden md:grid grid-cols-3 lg:flex flex-col">
     {% for article in featured_articles %}
-    <div class="relative flex justify-center my-2 overflow-y-hidden">
+    <div class="relative flex justify-center my-2 overflow-y-hidden mx-2 ">
         <!-- Image with opacity -->
         <a href="{{ article.link }}" class="relative">
             <img
               src="{% if article.image %}{{ article.image.url }}{% elif article.keywords.first.image %}{{ article.keywords.first.image.url }}{% else %}{% static 'images/fallback.jpg' %}{% endif %}"
-              class="rounded-box w-80 h-64 object-cover opacity-30" />
+              class="rounded-box w-80 h-64 object-cover opacity-30 border-2 rounded" />
 
             <!-- Title overlay -->
-            <div class="absolute inset-0 flex items-center justify-center">
-                <div class="text-white text-center font-semibold bg-black bg-opacity-50 px-4 py-2 rounded">
+            <div class="absolute inset-0 flex flex-col items-center justify-center">
+                <div class="text-white text-center bg-black bg-opacity-50 px-4 py-2 rounded">
+                    <p class="font-semibold">
                     {{ article.title }}
+                    </p>
+            <!--Published date -->
+                <p class="text-xs">{{ article.published_at }}</p>
                 </div>
             </div>
+
 
             <!--Banner overlay-->
             <div class="absolute bottom-0 left-0 w-full h-1/5">
