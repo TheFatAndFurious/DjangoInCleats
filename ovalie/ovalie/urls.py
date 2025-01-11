@@ -15,12 +15,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
 from django.views.generic import RedirectView
+from django.views.static import serve
 
 urlpatterns = [
     path("__reload__/", include("django_browser_reload.urls")),
     path('admin/', admin.site.urls),
     path('', include('news.urls')),
     path('favicon.ico', RedirectView.as_view(url='/static/favicon.ico', permanent=True)),
+    re_path(r'^ads\.txt$', serve, {'path': 'ads.txt', 'document_root': 'news/static/news/'}),
 ]
