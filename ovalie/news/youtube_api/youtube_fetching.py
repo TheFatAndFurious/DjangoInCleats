@@ -30,6 +30,7 @@ def save_videos(videos):
             description = video.get('description'),
             link = video['link'],
             channel = video.get('channel'),
+            categories = video.get('categories')
         )
         for video in videos if video['link'] not in existing_links
     ]
