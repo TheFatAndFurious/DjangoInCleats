@@ -5,7 +5,7 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - django_db:/app/db.sqlite3
+      - /root/database/db.sqlite3:/app/db.sqlite3
     env_file:
       - ovalie/.env
 
@@ -14,10 +14,6 @@ services:
     container_name: djangoincleats_worker
     command: bash -c "python ovalie/manage.py qcluster"
     volumes:
-      - django_db:/app/db.sqlite3
+      - /root/database/db.sqlite3:/app/db.sqlite3
     env_file:
       - ovalie/.env
-
-volumes:
-  django_db:
-    name: django_db
