@@ -12,8 +12,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-M5WJGL45');</script>
 <!-- End Google Tag Manager -->
 
+<!-- Google ads-->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2221928012776901"
      crossorigin="anonymous"></script>
+<!-- End Google ads-->
 <script>
 // Définissez dataLayer et la fonction gtag.
 
@@ -66,6 +68,7 @@ gtag('consent', 'default', {
     <title>{% block title %}{% endblock %}</title>
     {% tailwind_css %}
     <script src="{% static 'js/htmx.min.js' %}" defer></script>
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 </head>
 <body>
@@ -82,6 +85,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <footer>
         {% include 'partials/footer.html' %}
     </footer>
+<blockquote class="twitter-tweet">
+        <a href="https://twitter.com/stadetoulousain/status/1878793541016494186"></a>
+    </blockquote>
     <script src="{% static 'js/script.js' %}"></script>
     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </body>
