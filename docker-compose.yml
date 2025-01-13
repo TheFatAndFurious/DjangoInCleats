@@ -15,4 +15,4 @@ services:
       - django_db:/app/db.sqlite3
 
 volumes:
-  django_db:
+  django_incleats_django_db:
