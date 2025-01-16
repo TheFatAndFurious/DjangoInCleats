@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Article, Website, KeywordGroup, Videos, VideoCategory
+from .models import Article, Website, KeywordGroup, Videos, VideoCategory, Game
 
 
 class KeywordGroupInline(admin.TabularInline):
@@ -30,3 +30,7 @@ class VideoCategoryAdmin(admin.ModelAdmin):
 @admin.register(KeywordGroup)
 class KeywordAdmin(admin.ModelAdmin):
     list_display = ('name', 'keywords', 'league', 'is_top14', 'image', 'color')
+
+@admin.register(Game)
+class GameAdmin(admin.ModelAdmin):
+    list_display = ('league', 'round_number', 'home_team_name', 'away_team_name', 'start_time', 'status', 'score_home', 'score_away' )

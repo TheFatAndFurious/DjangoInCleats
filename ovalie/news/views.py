@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Article, KeywordGroup, Videos
+from .models import Article, KeywordGroup, Videos, Game
 from django.core.paginator import Paginator
 from .services.ArticleService import ArticleService
 
@@ -9,14 +9,10 @@ def about(request):
 def home(request):
     # fetch articles from the DB
     team = request.GET.get('team', 'all_teams')
-    print(f"coucou")
-    print(team)
     language = request.GET.get('language', 'french')
     videos = request.GET.get('videos', 'top14')
     articles = ArticleService.filter_articles(team,language)
-    print(articles)
-    # Here we are using params to filter articles by team
-    # if the 'team' value being received is equals to 'all_teams' then we will fetch all articles regardless of teams
+    upcoming_games = Game.objects.filter(status='upcoming')
 
 
     # fetch featured articles
@@ -51,6 +47,8 @@ def home(request):
             'top14_teams': top14_teams,
             'prod2_teams': prod2_teams,
             'videos': selected_videos,
+            'upcoming_games': upcoming_games,
             'featured_articles': featured_articles})
+
 
 

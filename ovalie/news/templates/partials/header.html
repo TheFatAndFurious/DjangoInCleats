@@ -5,8 +5,9 @@
     </div>
     <div class="bg-gray-800 overflow-hidden shadow-md">
     <div class="flex whitespace-nowrap animate-scroll">
-        <span class="mx-6 text-sm text-white">Stade Toulousain wins the championship!</span>
-        <span class="mx-6 text-sm text-white">Upcoming match: Toulouse vs Racing 92</span>
-        <span class="mx-6 text-sm text-white">Rugby World Cup 2024 updates!</span>
+        <span class="">A venir - Top 14, journee 15</span>
+        {% for game in upcoming_games %}
+        <span class="mx-6 text-sm text-white">{{game.home_team_name}} - {{game.away_team_name}}</span>
+        {% endfor %}
     </div>
 </div>

@@ -54,3 +54,26 @@ class Videos(models.Model):
 
     def __str__(self):
         return self.title
+
+class Game(models.Model):
+    game_id = models.IntegerField(unique=True)
+    round_id = models.IntegerField()
+    league = models.CharField(max_length=50, blank=True)
+    round_number = models.IntegerField(blank=True)
+    home_team_name = models.CharField(max_length=100)
+    home_team_id = models.IntegerField()
+    away_team_name = models.CharField(max_length=100)
+    away_team_id = models.IntegerField()
+    start_time = models.DateTimeField(blank=True, null=True)
+    status = models.CharField(blank=True, max_length=50)
+    score_home = models.IntegerField(blank=True, null=True)
+    score_away = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        unique_together = ('league', 'round_number', 'home_team_name', 'away_team_name')
+
+    def __str__(self):
+        return self.league
+
+
+
