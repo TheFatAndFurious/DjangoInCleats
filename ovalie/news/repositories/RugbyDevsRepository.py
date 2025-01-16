@@ -1,6 +1,5 @@
 import sys, os, django
 from dateutil.parser import parse
-from django.db import transaction
 sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ovalie.settings')
 django.setup()
@@ -31,23 +30,20 @@ class GameRepository:
             except Exception as e:
                 print(f"Error processing game: {e}")
 
-        game_instances = [
-            Game(
+        for game in upcoming_games:
+            Game.objects.update_or_create(
                 game_id=game['game_id'],
-                league=game['league'],
-                round_id=game['round_id'],
-                round_number=game['round_number'],
-                home_team_name=game['home_team_name'],
-                home_team_id=game['home_team_id'],
-                away_team_name=game['away_team_name'],
-                away_team_id=game['away_team_id'],
-                start_time=parse(game['start_time']) if game['start_time'] else None,
-                status=game['status'],
-                score_home=game['score_home'],
-                score_away=game['score_away'],
+                defaults={
+                    'league':game['league'],
+                    'round_id':game['round_id'],
+                    'round_number':game['round_number'],
+                    'home_team_name':game['home_team_name'],
+                    'home_team_id':game['home_team_id'],
+                    'away_team_name':game['away_team_name'],
+                    'away_team_id':game['away_team_id'],
+                    'start_time':parse(game['start_time']) if game['start_time'] else None,
+                    'status':game['status'],
+                    'score_home':game['score_home'],
+                    'score_away':game['score_away']
+                }
             )
-            for game in upcoming_games
-        ]
-
-        with transaction.atomic():
-            Game.objects.bulk_create(game_instances)
