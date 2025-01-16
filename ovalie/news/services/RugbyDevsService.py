@@ -1,10 +1,4 @@
-import requests, sys, os, django, datetime
-from dateutil.parser import parse
-from django.db import transaction
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ovalie.settings')
-django.setup()
-
+import requests
 
 headers = {
 	"x-rapidapi-key": "2a3f462634msh63a4a8280da611ep1352acjsn54d03d9ef887",

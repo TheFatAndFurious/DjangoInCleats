@@ -1,4 +1,4 @@
-import requests, sys, os, django, datetime
+import sys, os, django
 from dateutil.parser import parse
 from django.db import transaction
 sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
@@ -49,7 +49,5 @@ class GameRepository:
             for game in upcoming_games
         ]
 
-        print(game_instances)
-        # Save to database in a single query
         with transaction.atomic():
             Game.objects.bulk_create(game_instances)

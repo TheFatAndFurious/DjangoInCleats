@@ -16,7 +16,7 @@ class ArticleAdmin(admin.ModelAdmin):
 
 @admin.register(Videos)
 class VideoAdmin(admin.ModelAdmin):
-    list_display = ('title', 'channel', 'published_at', 'link', 'description', 'is_visible')
+    list_display = ('title', 'channel', 'categories', 'published_at', 'link', 'description', 'is_visible')
 
 
 @admin.register(Website)
