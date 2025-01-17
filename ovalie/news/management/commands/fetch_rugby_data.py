@@ -7,5 +7,8 @@ from news.services.tasks import RugbyDevsTasks
 class Command(BaseCommand):
     help = "Fetch rugby data"
 
+    def add_arguments(self, parser):
+        parser.add_argument('round_id', type=int, help='Round id to fetch matches from')
     def handle(self, *args, **options):
-        RugbyDevsTasks.check_upcoming_games()
+        round_id = options['round_id']
+        RugbyDevsTasks.check_upcoming_games(round_id)

@@ -8,14 +8,14 @@ from news.models import Game
 
 class GameRepository:
     @staticmethod
-    def save_matches(matches_data, league_name):
+    def save_matches(matches_data):
         upcoming_games = []
 
         for game in matches_data:
             try:
                 upcoming_games.append({
                     "game_id": game.get('id', 0),
-                    "league": league_name,
+                    "league": game.get('tournament_name', 'unknown'),
                     "round_id": game.get('round_id', 0),
                     "round_number": game.get('round', {}).get('round', None),
                     "home_team_name": game.get('home_team_name', 'Unknown'),

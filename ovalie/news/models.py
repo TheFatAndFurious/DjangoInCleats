@@ -69,9 +69,6 @@ class Game(models.Model):
     score_home = models.IntegerField(blank=True, null=True)
     score_away = models.IntegerField(blank=True, null=True)
 
-    class Meta:
-        unique_together = ('league', 'round_number', 'home_team_name', 'away_team_name')
-
     def __str__(self):
         return self.league
 
