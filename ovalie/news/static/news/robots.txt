@@ -1,0 +1,6 @@
+# Allow all web crawlers to access everything
+User-agent: *
+Disallow: /admin/
+
+# Point to your sitemap
+Sitemap: https://yourdomain.com/sitemap.xml

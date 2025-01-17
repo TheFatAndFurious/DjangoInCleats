@@ -2,9 +2,19 @@ from django.shortcuts import render
 from .models import Article, KeywordGroup, Videos, Game
 from django.core.paginator import Paginator
 from .services.ArticleService import ArticleService
+from django.http import HttpResponse
 
 def about(request):
     return render(request, 'news/about.html')
+
+def robots_txt(request):
+    content = """
+    User-agent: *
+    Disallow: /admin/
+
+    Sitemap: https://paparugby.com/sitemap.xml
+    """
+    return HttpResponse(content, content_type="text/plain")
 
 def home(request):
     # fetch articles from the DB
