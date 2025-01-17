@@ -12,8 +12,14 @@ def home(request):
     language = request.GET.get('language', 'french')
     videos = request.GET.get('videos', 'top14')
     articles = ArticleService.filter_articles(team,language)
-    upcoming_games = Game.objects.filter(status='upcoming')
 
+    # upcoming games for the banner
+    upcoming_games = Game.objects.filter(round_number=17)
+    league_name = None
+    round_number = None
+    if upcoming_games:
+        league_name = upcoming_games[0].league
+        round_number = upcoming_games[0].round_number
 
     # fetch featured articles
     # TODO: use the articles fetching method instead of fetching several times the same data
@@ -47,7 +53,10 @@ def home(request):
             'top14_teams': top14_teams,
             'prod2_teams': prod2_teams,
             'videos': selected_videos,
+            # data for the banner
             'upcoming_games': upcoming_games,
+            'league_name': league_name,
+            'round_number': round_number,
             'featured_articles': featured_articles})
 
 

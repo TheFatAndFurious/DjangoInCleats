@@ -5,9 +5,13 @@
     </div>
     <div class="bg-gray-800 overflow-hidden shadow-md">
     <div class="flex whitespace-nowrap animate-scroll">
-        <span class="">A venir - Top 14, journee 15</span>
+                <span class="mx-6 text-sm text-white font-semibold">{{league_name}} : Journée {{round_number}}</span>
         {% for game in upcoming_games %}
-        <span class="mx-6 text-sm text-white">{{game.home_team_name}} - {{game.away_team_name}}</span>
+            {% if game.status == 'finished'%}
+                <span class="mx-6 text-sm text-white">{{game.home_team_name}} {{game.score_home}} - {{game.score_away}} {{game.away_team_name}}</span>
+            {% else %}
+                <span class="mx-6 text-sm text-white">{{game.home_team_name}} - {{game.away_team_name}}</span>
+            {% endif%}
         {% endfor %}
     </div>
 </div>
