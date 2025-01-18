@@ -1,12 +1,9 @@
 <div>
-    <iframe
-          class="w-full h-64"
-          src="{{ link }}"
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allowfullscreen>
-    </iframe>
-    <p>{{description}}</p>
+    <div>
+    <lite-youtube
+        class="w-full h-64"
+        videoid="{{ link | slice:'-11:' }}"
+        style="display: block;"
+    ></lite-youtube>
+    <p>{{ description }}</p>
 </div>
