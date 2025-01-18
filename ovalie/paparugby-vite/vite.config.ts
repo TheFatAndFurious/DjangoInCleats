@@ -2,7 +2,7 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
   build: {
-    outDir: '../static/news', // Output directory for your Django static files
+    outDir: '../static/news/assets', // Output directory for your Django static files
     emptyOutDir: true,        // Clear the output directory before building
   },
   server: {
