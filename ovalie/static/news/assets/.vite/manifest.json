@@ -1,0 +1,11 @@
+{
+  "src/main.ts": {
+    "file": "assets/main-BUnNA7jj.js",
+    "name": "main",
+    "src": "src/main.ts",
+    "isEntry": true,
+    "css": [
+      "assets/main-g5FF2Z0D.css"
+    ]
+  }
+}

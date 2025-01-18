@@ -3,7 +3,11 @@ import { defineConfig } from 'vite';
 export default defineConfig({
   build: {
     outDir: '../static/news/assets', // Output directory for your Django static files
-    emptyOutDir: true,        // Clear the output directory before building
+    emptyOutDir: true,
+    manifest: true,
+    rollupOptions: {
+      input: './src/main.ts', // Specify your entry point(s)
+    },
   },
   server: {
     watch: {
