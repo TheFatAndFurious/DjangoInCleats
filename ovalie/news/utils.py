@@ -27,11 +27,11 @@ def get_vite_asset_path(asset_name, file_type="file"):
 
     # Get the file or CSS path
     if file_type == "file":
-        return f"/static/news/assets/assets/{manifest[asset_name]['file']}"
+        return f"/static/news/assets/{manifest[asset_name]['file']}"
     elif file_type == "css":
         css_files = manifest[asset_name].get('css', [])
         if not css_files:
             raise KeyError(f"No CSS files found for asset {asset_name}")
-        return [f"/static/news/assets/assets{css}" for css in css_files]
+        return [f"/static/news/assets/{css}" for css in css_files]
     else:
         raise ValueError("file_type must be 'file' or 'css'")
