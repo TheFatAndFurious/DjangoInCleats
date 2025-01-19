@@ -51,8 +51,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'news',
-    'tailwind',
-    'theme',
     'django_browser_reload',
     'django_q',
     'django.contrib.sitemaps'

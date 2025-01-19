@@ -3,6 +3,9 @@ from .models import Article, KeywordGroup, Videos, Game
 from django.core.paginator import Paginator
 from .services.ArticleService import ArticleService
 from django.http import HttpResponse
+from .utils import get_vite_asset_path
+vite_js = get_vite_asset_path('src/main.ts', file_type="file")
+vite_css = get_vite_asset_path('src/main.ts', file_type="css")
 
 def about(request):
     return render(request, 'news/about.html')
@@ -17,6 +20,8 @@ def robots_txt(request):
     return HttpResponse(content, content_type="text/plain")
 
 def home(request):
+    print(f"vite_js is {vite_js}")
+    print(f"vite_js is {vite_css[0]}")
     # fetch articles from the DB
     team = request.GET.get('team', 'all_teams')
     language = request.GET.get('language', 'french')
