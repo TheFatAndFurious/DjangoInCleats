@@ -34,7 +34,6 @@ def home(request):
         league_name = upcoming_games[0].league
         round_number = upcoming_games[0].round_number
 
-    # fetch featured articles
     # TODO: use the articles fetching method instead of fetching several times the same data
     featured_articles = Article.objects.prefetch_related('keywords').filter(is_featured=True).order_by('-published_at')[:10]
 
