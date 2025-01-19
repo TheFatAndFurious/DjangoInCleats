@@ -94,7 +94,7 @@ WSGI_APPLICATION = 'ovalie.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / '/app/db.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -160,8 +160,6 @@ Q_CLUSTER = {
 }
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://mathieu-baro.com",
-    "https://www.mathieu-baro.com",
     "https://www.paparugby.com",
     "https://paparugby.com"
 ]
