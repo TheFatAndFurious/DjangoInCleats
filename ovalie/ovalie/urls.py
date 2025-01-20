@@ -35,7 +35,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('news.urls')),
     path('favicon.ico', RedirectView.as_view(url='/static/favicon.ico', permanent=True)),
-    re_path(r'^ads\.txt$', serve, {'path': 'ads.txt', 'document_root': 'news/static/news/'}),
+    re_path(r'^ads\.txt$', serve, {'path': 'ads.txt', 'document_root': 'ovalie/news/static/news/'}),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
     path('robots.txt', robots_txt, name='robots_txt'),
 ]
