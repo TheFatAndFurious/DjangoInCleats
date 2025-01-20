@@ -28,7 +28,7 @@ class Article(models.Model):
     is_visible = models.BooleanField(default=True)
     admin_comment = models.TextField(null=True)
     is_featured = models.BooleanField(default=False)
-    image = models.ImageField(upload_to='/images')
+    image = models.ImageField(upload_to='images')
     keywords = models.ManyToManyField(KeywordGroup, blank=True)
     is_french_language = models.BooleanField(default=True)
     is_video = models.BooleanField(default=False)
