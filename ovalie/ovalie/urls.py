@@ -29,6 +29,9 @@ from django.views.generic import RedirectView
 from django.views.static import serve
 from django.contrib import sitemaps
 from django.contrib.sitemaps.views import sitemap
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 urlpatterns = [
     path("__reload__/", include("django_browser_reload.urls")),
@@ -39,3 +42,7 @@ urlpatterns = [
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
     path('robots.txt', robots_txt, name='robots_txt'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
