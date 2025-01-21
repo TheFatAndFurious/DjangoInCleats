@@ -5,6 +5,8 @@ import django
 import requests
 from bs4 import BeautifulSoup
 
+
+
 sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ovalie.settings')
 django.setup()
@@ -28,14 +30,17 @@ def run_all_scrapers():
     print("Scraping rugbypass")
     scrap_rugbypass()
 
+    print("Scraping ladepeche")
+    scrap_ladepeche_pro()
+
     print("all scrapers ran successfully, we gucci")
 
-def save_article(title, link, website_name, is_french_language=True):
+def save_article(title, link, website_name, is_french_language=True, is_visible=True):
     website, _ = Website.objects.get_or_create(name=website_name)
 
     article, created = Article.objects.get_or_create(
         link=link,
-        defaults={'title': title, 'website': website, 'is_french_language':is_french_language}
+        defaults={'title': title, 'website': website, 'is_french_language':is_french_language, 'is_visible':is_visible}
     )
 
     if created:
@@ -70,6 +75,18 @@ def scrap_rugbyrama():
         title = article.get_text()
         link = url + article['href']
         save_article(title, link, 'rugbyrama')
+
+def scrap_ladepeche_pro():
+    url = "https://www.ladepeche.fr/sport/rugby-xv/"
+    response = requests.get(url)
+    soup = BeautifulSoup(response.content, "html.parser")
+    articles = soup.find_all("a", class_="stretched-link")
+
+    for article in articles:
+        title = article.get_text()
+        link = url + article["href"]
+        save_article(title, link, "ladepeche", is_visible=False)
+
 
 def scrap_rugbynistere():
     url = 'https://lerugbynistere.fr'
