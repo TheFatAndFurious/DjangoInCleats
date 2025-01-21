@@ -4,9 +4,13 @@ from django.core.paginator import Paginator
 from .services.ArticleService import ArticleService
 from django.http import HttpResponse
 from .utils import get_vite_asset_path
+
+# Creating dynamic links for js and css files
 vite_js = get_vite_asset_path('src/main.ts', file_type="file")
 vite_css = get_vite_asset_path('src/main.ts', file_type="css")
 vite_css_link = vite_css[0]
+
+
 def about(request):
     return render(request, 'news/about.html')
 
@@ -27,7 +31,7 @@ def home(request):
     articles = ArticleService.filter_articles(team,language)
 
     # upcoming games for the banner
-    upcoming_games = Game.objects.filter(round_number=17)
+    upcoming_games = Game.objects.filter(round_number=15)
     league_name = None
     round_number = None
     if upcoming_games:
