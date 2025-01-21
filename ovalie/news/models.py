@@ -2,9 +2,9 @@ from django.db import models
 
 class Website(models.Model):
     name = models.CharField(max_length=100, unique=True)
-    logo = models.ImageField(upload_to='static/news/images/logos/')
+    logo = models.ImageField(upload_to='images/')
     url = models.URLField()
-    banner = models.ImageField(upload_to='static/news/images/banners/', null=True)
+    banner = models.ImageField(upload_to='images/', null=True)
 
     def __str__(self):
         return self.name
@@ -12,7 +12,7 @@ class Website(models.Model):
 class KeywordGroup(models.Model):
     name = models.CharField(max_length=80, unique=True)
     keywords = models.JSONField(blank=True, null=True)
-    image = models.ImageField(upload_to='static/news/images/keywords_images', null=True, blank=True)
+    image = models.ImageField(upload_to='images/', null=True, blank=True)
     color = models.CharField(max_length=7, default="#000000")
     is_top14 = models.BooleanField(default=False)
     league = models.CharField(max_length=50, null=True)
@@ -37,7 +37,7 @@ class Article(models.Model):
 
 class VideoCategory(models.Model):
     category = models.CharField(max_length=150, unique=True)
-    image = models.ImageField(upload_to='static/news/images/video_categories', null=True, blank=True)
+    image = models.ImageField(upload_to='images/', null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
