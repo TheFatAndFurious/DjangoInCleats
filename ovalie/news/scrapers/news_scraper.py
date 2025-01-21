@@ -33,6 +33,8 @@ def run_all_scrapers():
     print("Scraping ladepeche")
     scrap_ladepeche_pro()
 
+    print("Scraping sudouest")
+    scrap_sudouest()
     print("all scrapers ran successfully, we gucci")
 
 def save_article(title, link, website_name, is_french_language=True, is_visible=True):
@@ -87,6 +89,19 @@ def scrap_ladepeche_pro():
         link = url + article["href"]
         save_article(title, link, "ladepeche", is_visible=False)
 
+def scrap_sudouest():
+    url = "https://www.sudouest.fr/sport/rugby/"
+    response = requests.get(url)
+    soup = BeautifulSoup(response.content, "html.parser")
+    articles = soup.find_all("div", class_="article-wrapper")
+
+    for article in articles:
+        is_title = article.find("h2")
+        if is_title:
+            title = is_title.text
+        link = article.find("a")
+        linktosave = link['href']
+        save_article(title, linktosave, "Sud-Ouest", is_visible=False)
 
 def scrap_rugbynistere():
     url = 'https://lerugbynistere.fr'
