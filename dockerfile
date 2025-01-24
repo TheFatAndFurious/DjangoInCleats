@@ -4,6 +4,8 @@ ENV PYTHONDONTWRITEBYTECODE=1
 
 ENV PYTHONUNBUFFERED=1
 
+ENV DJANGO_SETTINGS_MODULE=ovalie.ovalie.settings
+
 WORKDIR /app
 
 COPY ovalie/requirements.txt /app/
