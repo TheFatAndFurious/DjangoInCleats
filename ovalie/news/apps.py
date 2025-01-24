@@ -3,4 +3,4 @@ from django.apps import AppConfig
 
 class NewsConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'news'  # Ensure this matches the app folder name
+    name = 'ovalie.news'  # Ensure this matches the app folder name
