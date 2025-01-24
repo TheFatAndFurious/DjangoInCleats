@@ -16,7 +16,5 @@ COPY . /app/
 
 EXPOSE 8000
 
-RUN python -m ovalie.manage collectstatic --noinput
-
 CMD ["gunicorn", "--bind", "0.0.0.0:8000", "ovalie.wsgi:application"]
 
