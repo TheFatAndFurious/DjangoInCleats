@@ -22,7 +22,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ovalie.settings')
 django.setup()
 
-from news.views import robots_txt
+from ovalie.news.views import robots_txt
 from django.contrib import admin
 from django.urls import path, include, re_path
 from django.views.generic import RedirectView
