@@ -11,7 +11,7 @@ def get_vite_asset_path(asset_name, file_type="file"):
     :return: The URL path to the asset.
     :raises: FileNotFoundError if the manifest is missing or KeyError if the asset is not found.
     """
-    manifest_path = os.path.join(settings.BASE_DIR, 'static', 'news', 'assets', '.vite', 'manifest.json')
+    manifest_path = os.path.join(settings.BASE_DIR, 'ovalie', 'static', 'news', 'assets', '.vite', 'manifest.json')
 
     # Ensure the manifest file exists
     if not os.path.exists(manifest_path):
