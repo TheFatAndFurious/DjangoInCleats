@@ -52,7 +52,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'ovalie.news',
+    'ovalie.news.apps.NewsConfig',
     'django_browser_reload',
     'django_q',
     'django.contrib.sitemaps'

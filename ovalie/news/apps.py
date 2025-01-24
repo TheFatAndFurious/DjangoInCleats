@@ -1,6 +1,5 @@
 from django.apps import AppConfig
 
-
 class NewsConfig(AppConfig):
-    default_auto_field = 'django.db.models.BigAutoField'
-    name = 'ovalie.news'  # Ensure this matches the app folder name
+    name = "ovalie.news"   # the dotted path to the code
+    label = "news"         # the internal label Django uses
