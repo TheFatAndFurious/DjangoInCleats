@@ -12,7 +12,7 @@ vite_css_link = vite_css[0]
 
 
 def about(request):
-    return render(request, 'news/about.html')
+    return render(request, 'ovalie/news/about.html')
 
 def robots_txt(request):
     content = """
@@ -64,7 +64,7 @@ def home(request):
             'videos': selected_videos
         })
     else:
-            return render(request, 'news/home.html', {
+            return render(request, 'ovalie/news/home.html', {
             'page_obj': page_obj,
             'top14_teams': top14_teams,
             'prod2_teams': prod2_teams,
