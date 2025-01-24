@@ -142,8 +142,8 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 STATICFILES_DIRS = [
-    BASE_DIR / "static",  # Global static directory (if used)
-    BASE_DIR / "news/static/news",  # Add your app's static directory
+    BASE_DIR / "ovalie/static",  # Global static directory (if used)
+    BASE_DIR / "ovalie/news/static/news",  # Add your app's static directory
 ]
 
 # Default primary key field type
