@@ -14,9 +14,7 @@ from pathlib import Path
 import os
 import environ
 
-env = environ.Env(
-    DEBUG=(bool, False)
-)
+env = environ.Env()
 
 DEBUG=False
 
@@ -33,7 +31,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'news/media')
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
 
 ALLOWED_HOSTS = [
     'localhost',
@@ -143,7 +140,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 STATICFILES_DIRS = [
     BASE_DIR / "ovalie/static",  # Global static directory (if used)
-    BASE_DIR / "ovalie/news/static/news",  # Add your app's static directory
+    BASE_DIR / "ovalie/news/static/news",
 ]
 
 # Default primary key field type
