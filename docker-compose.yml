@@ -11,11 +11,11 @@ services:
     env_file:
       - ovalie/.env
 
-#  worker:
-#    build: .
-#    container_name: djangoincleats_worker
-#    command: bash -c "python ovalie/manage.py qcluster"
-#    volumes:
-#      - /root/database/db.sqlite3:/app/db.sqlite3
-#    env_file:
-#      - ovalie/.env
+  worker:
+    build: .
+    container_name: djangoincleats_worker
+    command: bash -c "python -m ovalie.manage qcluster"
+    volumes:
+      - /root/database/db.sqlite3:/app/db.sqlite3
+    env_file:
+      - ovalie/.env
