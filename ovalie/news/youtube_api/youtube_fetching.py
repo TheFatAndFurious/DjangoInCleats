@@ -8,7 +8,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ovalie.settings')
 django.setup()
 
-from news.models import Videos, VideoCategory
+from ovalie.news.models import Videos, VideoCategory
 
 RUGBYPASSFR_CHANNEL_ID = "UC8yDQBIfghpQCrJufJCGmIA"
 URC_CHANNEL_ID = "UC-S6cXyil4qbIPfb2hrcH4w"

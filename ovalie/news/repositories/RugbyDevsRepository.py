@@ -4,7 +4,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ovalie.settings')
 django.setup()
 
-from news.models import Game
+from ovalie.news.models import Game
 
 class GameRepository:
     @staticmethod

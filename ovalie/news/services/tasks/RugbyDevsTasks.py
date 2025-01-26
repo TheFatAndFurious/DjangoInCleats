@@ -3,8 +3,8 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ovalie.settings')
 django.setup()
 
-from news.services.RugbyDevsService import get_matches_from_league
-from news.repositories.RugbyDevsRepository import GameRepository
+from ovalie.news.services.RugbyDevsService import get_matches_from_league
+from ovalie.news.repositories.RugbyDevsRepository import GameRepository
 
 
 def check_upcoming_games(round_id:int):

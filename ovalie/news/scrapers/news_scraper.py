@@ -11,7 +11,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ovalie.settings')
 django.setup()
 
-from news.models import Article, Website, KeywordGroup
+from ovalie.news.models import Article, Website, KeywordGroup
 
 
 def run_all_scrapers():
