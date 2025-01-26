@@ -6,7 +6,7 @@ services:
       - "8000:8000"
     volumes:
       - /root/database/db.sqlite3:/app/db.sqlite3
-      - /root/media:/app/ovalie/news/media
+      - /var/www/paparugby/media:/app/ovalie/news/media
       - /var/www/paparugby/staticfiles:/app/staticfiles
     env_file:
       - ovalie/.env
