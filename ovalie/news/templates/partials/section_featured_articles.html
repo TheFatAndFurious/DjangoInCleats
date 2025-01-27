@@ -10,7 +10,7 @@
         <a href="{{ article.link }}" class="relative" target="_blank">
             <img
               src="{% if article.image %}{{ article.image.url }}{% elif article.keywords.first.image %}{{ article.keywords.first.image.url }}{% else %}{% static 'images/fallback.jpg' %}{% endif %}"
-              class="rounded-box w-80 h-64 object-cover opacity-30 border-2 rounded"
+              class="rounded-box w-80 h-32 object-cover opacity-30 border-2 rounded"
               loading="lazy"
                 alt="{{article.image}}"/>
 

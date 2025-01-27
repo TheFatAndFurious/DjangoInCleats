@@ -25,4 +25,4 @@ class ArticleService:
         elif team != 'all_teams':
             filters &= Q(keywords__name__iexact=team)
 
-        return Article.objects.filter(filters).filter(is_visible=True).prefetch_related('keywords').order_by('-published_at')
+        return Article.objects.filter(filters).filter(is_visible=True).filter(is_featured=False).prefetch_related('keywords').order_by('-published_at')
