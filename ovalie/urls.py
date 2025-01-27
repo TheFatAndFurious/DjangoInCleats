@@ -35,7 +35,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path("__reload__/", include("django_browser_reload.urls")),
-    path('admin/', admin.site.urls),
+    path('privateparts/', admin.site.urls),
     path('', include('ovalie.news.urls')),
     path('favicon.ico', RedirectView.as_view(url='/static/favicon.ico', permanent=True)),
     re_path(r'^ads\.txt$', serve, {'path': 'ads.txt', 'document_root': 'ovalie/news/static/news/'}),
