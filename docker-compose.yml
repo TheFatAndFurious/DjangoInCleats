@@ -10,6 +10,8 @@ services:
       - /var/www/paparugby/staticfiles:/app/staticfiles
     env_file:
       - ovalie/.env
+    environment:
+      DJANGO_SETTINGS_MODULE: ovalie.settings.settings
 
   worker:
     build: .
