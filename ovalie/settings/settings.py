@@ -73,7 +73,7 @@ ROOT_URLCONF = 'ovalie.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-         'DIRS': [BASE_DIR / 'ovalie/news/templates/news'],
+         'DIRS': [BASE_DIR / 'news/templates/news'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
