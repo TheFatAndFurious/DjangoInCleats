@@ -16,7 +16,7 @@ services:
   worker:
     build: .
     container_name: djangoincleats_worker
-    command: bash -c "python manage.py qcluster"
+    command: bash -c "python -m ovalie.manage qcluster"
     volumes:
       - /root/database/db.sqlite3:/app/db.sqlite3
     env_file:
