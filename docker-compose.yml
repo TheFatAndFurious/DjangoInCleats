@@ -1,6 +1,8 @@
 services:
   web:
-    build: .
+    build:
+      context: .
+      dockerfile: dockerfile
     container_name: my_django_app
     ports:
       - "8000:8000"
@@ -23,3 +25,5 @@ services:
       - /root/database/db.sqlite3:/app/db.sqlite3
     env_file:
       - ovalie/.env
+    environment:
+      DJANGO_SETTINGS_MODULE: ovalie.settings.settings
