@@ -14,7 +14,9 @@ services:
       DJANGO_SETTINGS_MODULE: ovalie.settings.settings
 
   worker:
-    build: .
+    build:
+      context: .
+      dockerfile: dockerfile
     container_name: djangoincleats_worker
     command: bash -c "python -m ovalie.manage qcluster"
     volumes:

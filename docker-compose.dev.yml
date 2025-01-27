@@ -14,14 +14,14 @@ services:
       DJANGO_SETTINGS_MODULE: ovalie.settings.dev  # Ensure dev settings are used
     command: python -m ovalie.manage runserver 0.0.0.0:8000  # Start Django dev server
 
-#  worker:
-#    build:
-#      context: .
-#      dockerfile: Dockerfile.dev  # Use the dev Dockerfile
-#    container_name: my_django_worker_dev
-#    command: bash -c "python -m ovalie.manage qcluster"  # Use a dev-specific command if needed
-#    volumes:
-#      - .:/app
-#      - ./db.sqlite3:/app/db.sqlite3
-#    env_file:
-#      - ovalie/.env
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev  # Use the dev Dockerfile
+    container_name: my_django_worker_dev
+    command: bash -c "python -m ovalie.manage qcluster"  # Use a dev-specific command if needed
+    volumes:
+      - .:/app
+      - ./db.sqlite3:/app/db.sqlite3
+    env_file:
+      - ovalie/.env
