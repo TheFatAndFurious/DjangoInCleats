@@ -2,14 +2,19 @@ from django.shortcuts import render
 from .models import Article, KeywordGroup, Videos, Game
 from django.core.paginator import Paginator
 from .services.ArticleService import ArticleService
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from .utils import get_vite_asset_path
+from django.conf import settings
+
 
 # Creating dynamic links for js and css files
 vite_js = get_vite_asset_path('src/main.ts', file_type="file")
 vite_css = get_vite_asset_path('src/main.ts', file_type="css")
 vite_css_link = vite_css[0]
 
+
+def test_view(request):
+    return render(request, 'base.html', {'debug': settings.DEBUG})
 
 def about(request):
     return render(request, 'news/about.html')

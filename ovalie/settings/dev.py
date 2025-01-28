@@ -2,9 +2,16 @@ from .settings import *
 
 # Settings file used for dev
 
-DEBUG = True
+DEBUG=True
 
 STATIC_URL = '/static/'
+
+print(f"{BASE_DIR}")
+
+INTERNAL_IPS = (
+    '172.17.0.1',
+    '172.18.0.1'
+)
 
 TEMPLATES = [
     {
