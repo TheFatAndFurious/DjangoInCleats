@@ -34,7 +34,7 @@ def run_all_scrapers():
     scrap_ladepeche_pro()
 
     print("Scraping sudouest")
-    scrap_sudouest()
+    #scrap_sudouest()
     print("all scrapers ran successfully, we gucci")
 
 def save_article(title, link, website_name, is_french_language=True, is_visible=True):
@@ -97,10 +97,15 @@ def scrap_sudouest():
 
     for article in articles:
         is_title = article.find("h2")
-        if is_title:
-            title = is_title.text
+        if not is_title:
+            continue
+        title = is_title.text
+
         link = article.find("a")
-        linktosave = link['href']
+        if not link or link.get("href"):
+            continue
+
+        linktosave = url + link['href']
         save_article(title, linktosave, "Sud-Ouest", is_visible=False)
 
 def scrap_rugbynistere():
