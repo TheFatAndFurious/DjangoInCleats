@@ -1,8 +1,66 @@
-    <div class="navbar bg-base-300 flex flex-col">
-        <a href="/"><h1 class="text-4xl text-amber-900 text-center font-bold shadow-2xl">PapaRugby</h1>
-        </a>
-        <p class="italic text-sm md:text-xl">"Parce que rien de l'Ovalie ne nous sera étranger"</p>
+
+    <!-- HEADER -->
+<div class="navbar bg-base-300">
+  <div class="navbar-start">
+    <div class="dropdown">
+      <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-5 w-5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h8m-8 6h16" />
+        </svg>
+      </div>
+      <ul
+        tabindex="0"
+        class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+        <li><a>Accueil</a></li>
+        <li>
+          <a>Essentiel de l'actualité</a>
+          <ul class="p-2">
+            <li><a>Transferts</a></li>
+            <li><a>6 Nations</a></li>
+            <li><a>XV de France</a></li>
+          </ul>
+        </li>
+        <li><a>Classements</a></li>
+      </ul>
     </div>
+      <div class="flex flex-col">
+        <p class="text-xl">PapaRugby</p>
+        <p class="italic text-xs">"Parce que rien de l'Ovalie ne nous sera étranger"</p>
+
+      </div>
+  </div>
+  <div class="navbar-center hidden lg:flex">
+    <ul class="menu menu-horizontal px-1">
+      <li><a>Accueil</a></li>
+      <li>
+        <details>
+          <summary>Essentiel de l'actualité</summary>
+          <ul class="p-2">
+            <li><a>Transferts</a></li>
+            <li><a>XV de France</a></li>
+            <li><a>6 Nations</a></li>
+          </ul>
+        </details>
+      </li>
+      <li><a>Classements</a></li>
+    </ul>
+  </div>
+  <div class="navbar-end">
+    <a class="btn">Button</a>
+  </div>
+</div>
+
+    <!-- Rolling banner -->
+    <!--
     <div class="bg-gray-800 overflow-hidden shadow-md">
     <div class="flex whitespace-nowrap animate-scroll">
                 <span class="mx-6 text-sm text-white font-semibold">{{league_name}} : Journée {{round_number}}</span>
@@ -14,4 +72,5 @@
             {% endif%}
         {% endfor %}
     </div>
+    -->
 </div>
