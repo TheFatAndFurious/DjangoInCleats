@@ -1,8 +1,13 @@
-<div class="max-w-1/2 mx-auto" >
+<div class="max-w-3xl mx-auto space-y-2" >
     {% for article in featured_articles %}
-    <div class="flex items-center">
-        <img class="w-16 h-16 object-cover" src="{{article.image.url}}">
-        <h3>{{article.admin_comment}}</h3>
+    <div class="flex items-center bg-base">
+        <img class="w-16 h-16 object-cover mr-2 border-2" src="{{article.image.url}}">
+        <div>
+            {% if article.tag %}
+            <p class="text-xs text-white">{{article.tag}}</p>
+            {% endif %}
+            <h3>{{article.admin_comment}}</h3>
+        </div>
     </div>
     {% endfor %}
 </div>

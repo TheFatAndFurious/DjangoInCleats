@@ -14,7 +14,7 @@
                 <li class="px-2 mr-2 font-semibold text-xs text-white rounded" style="background-color: {{ keyword_group.color }}">{{ keyword_group.name }}</li>
               {% endfor %}
             </ul>
-          <a href="{{ article.link }}" target="_blank" rel="noopener noreferrer" class="text-sm pt-2 font-medium">
+          <a href="{{ article.link }}" target="_blank" rel="noopener noreferrer" class="text-sm pt-2 font-medium hover:text-white">
                 {{ article.title }}
             </a>
             <p class="lg:hidden text-xs mt-1">{{ article.published_at|friendly_date }}</p>
