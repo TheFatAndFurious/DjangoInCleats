@@ -1,0 +1,8 @@
+<div class="max-w-1/2 mx-auto" >
+    {% for article in featured_articles %}
+    <div class="flex items-center">
+        <img class="w-16 h-16 object-cover" src="{{article.image.url}}">
+        <h3>{{article.admin_comment}}</h3>
+    </div>
+    {% endfor %}
+</div>
