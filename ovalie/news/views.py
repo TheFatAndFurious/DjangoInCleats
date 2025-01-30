@@ -13,8 +13,12 @@ vite_css = get_vite_asset_path('src/main.ts', file_type="css")
 vite_css_link = vite_css[0]
 
 
-def test_view(request):
-    return render(request, 'base.html', {'debug': settings.DEBUG})
+def articles_page(request):
+    featured_articles = Article.objects.prefetch_related('keywords').filter(is_featured=True).order_by('-published_at')[:10]
+
+    return render(request, 'news/featured_articles.html', {
+        'featured_articles': featured_articles
+    })
 
 def about(request):
     return render(request, 'news/about.html')
@@ -44,7 +48,7 @@ def home(request):
         round_number = upcoming_games[0].round_number
 
     # TODO: use the articles fetching method instead of fetching several times the same data
-    featured_articles = Article.objects.prefetch_related('keywords').filter(is_featured=True).order_by('-published_at')[:10]
+    featured_articles = Article.objects.prefetch_related('keywords').filter(is_featured=True).order_by('-published_at')[:8]
 
     selected_videos = Videos.objects.filter(is_visible=True).filter(categories__category__iexact=videos).order_by('-published_at')[:5]
 

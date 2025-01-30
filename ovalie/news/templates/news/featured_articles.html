@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block title %}PapaRugby - Articles{% endblock %}
+
+{% block content %}
+    {% include 'partials/welcome.html' with title="L'essentiel de l'actualité" text="Une selection triée sur le volet pour ne rien rater de l'actualité" %}
+
+    {% include 'partials/block_articles_list.html' %}
+{% endblock %}

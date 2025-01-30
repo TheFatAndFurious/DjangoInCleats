@@ -1,0 +1,20 @@
+
+<div class="max-w-xs lg:max-w-3xl mx-auto mt-4">
+
+<!-- list of articles -->
+    <div class="mx-auto space-y-2" >
+        {% for article in featured_articles %}
+        <div class="flex items-center">
+            <img class="w-12 h-12 object-cover mr-2 border" src="{{article.image.url}}">
+            <div>
+                {% if article.tag %}
+                <p class="text-xs text-white">{{article.tag}}</p>
+                {% endif %}
+                <a href="{{article.link}}">
+                    <h3 class="text-sm hover:text-white">{{article.admin_comment}}</h3>
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
