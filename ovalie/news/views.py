@@ -17,11 +17,16 @@ def articles_page(request):
     featured_articles = Article.objects.prefetch_related('keywords').filter(is_featured=True).order_by('-published_at')[:10]
 
     return render(request, 'news/featured_articles.html', {
+        'vite_css': vite_css_link,
+        'vite_js': vite_js,
         'featured_articles': featured_articles
     })
 
 def about(request):
-    return render(request, 'news/about.html')
+    return render(request, 'news/about.html',{
+        'vite_css': vite_css_link,
+        'vite_js': vite_js,
+    })
 
 def robots_txt(request):
     content = """
