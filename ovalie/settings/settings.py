@@ -136,8 +136,8 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 
 STATICFILES_DIRS = [
-    BASE_DIR / "ovalie/static",  # Global static directory (if used)
-    BASE_DIR / "ovalie/news/static/news",
+    BASE_DIR / "static",  # Global static directory (if used)
+    BASE_DIR / "news/static/news",
 ]
 
 # Default primary key field type
