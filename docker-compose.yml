@@ -9,7 +9,7 @@ services:
     volumes:
       - /root/database/db.sqlite3:/app/db.sqlite3
       - /var/www/paparugby/media:/app/ovalie/news/media
-      - /var/www/paparugby/staticfiles:/app/staticfiles
+      - /var/www/paparugby/staticfiles:/app/ovalie/staticfiles
     env_file:
       - ovalie/.env
     environment:
