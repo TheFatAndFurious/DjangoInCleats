@@ -1,32 +1,24 @@
 {% load static %}
 <div>
-    {% include 'partials/section_title.html' with title="A ne pas rater" subtitle="La selection des infos a ne surtout pas rater pour etre certain de pouvoir impressionner les copains au bistrot." %}
+    {% include 'partials/section_title.html' with title="L'essentiel" subtitle="La selection des infos a ne surtout pas rater pour etre certain de pouvoir impressionner les copains au bistrot." %}
 
     <!-- SECTION ONLY VISIBLE AT THE MD BREAKPOINT -->
     <div class="flex flex-col md:grid grid-cols-3 lg:flex flex-col">
     {% for article in featured_articles %}
-    <div class="relative flex justify-center my-2 overflow-y-hidden mx-2 ">
+    <div class="mx-10">
         <!-- Image with opacity -->
+        <div class="mt-4">
+        <p class="text-xs">{{article.tag}}</p>
         <a href="{{ article.link }}" class="relative" target="_blank">
-            <img
-              src="{% if article.image %}{{ article.image.url }}{% elif article.keywords.first.image %}{{ article.keywords.first.image.url }}{% else %}{% static 'images/fallback.jpg' %}{% endif %}"
-              class="rounded-box w-80 h-64 object-cover opacity-30 border-2 rounded"
-              loading="lazy"
-                alt="{{article.image}}"/>
-
             <!-- Title overlay -->
-            <div class="absolute inset-0 flex flex-col items-center justify-center">
-                <div class="text-white text-center bg-black bg-opacity-50 px-4 py-2 rounded space-y-2">
+                <div class="text-primary-content text-center px-4 hover:text-blue-600">
                     <p class="font-semibold">
                     {{ article.admin_comment }}
                     </p>
 
-            <!--Source website       -->
-                    <p class="text-xs pt-2">{{article.website | capfirst}}</p>
-            <!--Published date -->
-                <p class="text-xs">{{ article.published_at }}</p>
-                </div>
             </div>
+
+        </div>
 
 
             <!--Banner overlay-->
@@ -34,7 +26,7 @@
     </div>
     {% endfor %}
 
-        <a href="/articles" class="font-semibold text-white hover:text-blue-600"> Voir tous les articles </a>
+        <a href="/articles" class="font-semibold text-primary hover:text-blue-600 mt-16">🍿 >> Voir tous les articles  << 🍿</a>
 </div>
 
 </div>
