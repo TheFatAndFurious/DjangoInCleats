@@ -1,30 +1,40 @@
 {% load static %}
 <div>
-    {% include 'partials/section_title.html' with title="L'essentiel" subtitle="La selection des infos a ne surtout pas rater pour etre certain de pouvoir impressionner les copains au bistrot." %}
+    {% include 'partials/section_title.html' with title="Les gros titres" subtitle="La selection des infos a ne surtout pas rater pour etre certain de pouvoir impressionner les copains au bistrot." %}
 
     <!-- SECTION ONLY VISIBLE AT THE MD BREAKPOINT -->
     <div class="flex flex-col md:grid grid-cols-3 lg:flex flex-col">
     {% for article in featured_articles %}
-    <div class="mx-10">
-        <!-- Image with opacity -->
-        <div class="mt-4">
-        <p class="text-xs">{{article.tag}}</p>
-        <a href="{{ article.link }}" class="relative" target="_blank">
-            <!-- Title overlay -->
-                <div class="text-primary-content text-center px-4 hover:text-blue-600">
-                    <p class="font-semibold">
-                    {{ article.admin_comment }}
-                    </p>
+  <div class="mx-10">
+    <p class="text-xs mt-4 text-primary-content">{{ article.tag }}</p>
 
-            </div>
-
+    {% if article.with_picture and article.image %}
+      <!-- Display article.image as a background if `witch_picture` is True -->
+      <a href="{{ article.link }}"
+         target="_blank"
+         class="relative block h-52 lg:h-48 bg-center bg-cover hover:opacity-80 transition-opacity duration-200 shadow"
+         style="background-image: url('{{ article.image.url }}');">
+        <!-- Optional overlay for text readability -->
+        <div class="w-full text-accent-content flex items-center absolute bottom-0 justify-center px-4 glass py-1">
+          <p class="font-semibold">
+            {{ article.admin_comment }}
+          </p>
         </div>
+      </a>
 
+    {% else %}
+      <!-- Fallback if `witch_picture` is False or no image is available -->
+      <a href="{{ article.link }}" class="relative" target="_blank">
+        <div class="text-primary-content text-center px-4 hover:text-blue-600 duration-200">
+          <p class="font-semibold">
+            {{ article.admin_comment }}
+          </p>
+        </div>
+      </a>
+    {% endif %}
+  </div>
+{% endfor %}
 
-            <!--Banner overlay-->
-        </a>
-    </div>
-    {% endfor %}
 
         <a href="/articles" class="font-semibold text-primary hover:text-blue-600 mt-16">🍿 >> Voir tous les articles  << 🍿</a>
 </div>
