@@ -8,7 +8,7 @@
 
         <div class="flex justify-between space-x-4 mt-4 px-2">
     <!-- TEAM SELECTOR -->
-                <select aria-label="team" class="select select-bordered w-full max-w-xs" id="team" name="team">
+                <select aria-label="team" class="select select-bordered w-full max-w-xs text-xs" id="team" name="team">
                     <option selected value="all_teams">Toutes les news</option>
                     <option value="top14">Top 14</option>
                     {% for team in top14_teams %}
@@ -21,7 +21,7 @@
                 </select>
 
     <!-- LANGUAGE SELECTOR -->
-                <select aria-label="language" class="select select-bordered w-full max-w-xs" id="language" name="language">
+                <select aria-label="language" class="select select-bordered w-full max-w-xs text-xs" id="language" name="language">
                     <option selected value="french">French</option>
                     <option value="english">English</option>
                     <option value="all_articles">Both</option>
