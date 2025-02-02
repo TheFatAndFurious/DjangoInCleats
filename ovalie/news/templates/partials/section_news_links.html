@@ -3,7 +3,7 @@
 <!-- NEWS LINKS -->
     <!-- SECTION TITLE-->
       <div class="md:w-2/3 mx-auto lg:w-full">
-          {% include 'partials/section_title.html' with title="Nouvelles du terrain" subtitle="Retrouvez ici les liens vers les derniers articles publiés sur les meilleurs sites de rugby mondiaux. Vous pouvez choisir de selectionner les articles par équipe et par langue." %}
+          {% include 'partials/section_title.html' with title="Flash infos" subtitle="Retrouvez ici les liens vers les derniers articles publiés sur les meilleurs sites de rugby mondiaux. Vous pouvez choisir de selectionner les articles par équipe et par langue." %}
           <div hx-get="/" hx-target="#articles-container" hx-swap="innerHTML" hx-trigger="change from:select" hx-include="#team, #language" hx-indicator="#spinner">
 
         <div class="flex justify-between space-x-4 mt-4 px-2">

@@ -10,8 +10,8 @@ class KeywordGroupInline(admin.TabularInline):
 @admin.register(Article)
 class ArticleAdmin(admin.ModelAdmin):
     inlines = [KeywordGroupInline]  # Add inline for editing keywords
-    list_display = ('title', 'link', 'tag', 'published_at', 'website', 'is_visible', 'is_featured', 'is_french_language', 'is_video', 'image')
-    list_filter = ('is_visible', 'is_featured', 'website', 'tag')
+    list_display = ('title', 'link', 'tag', 'published_at', 'website','with_picture', 'is_visible', 'is_featured', 'is_french_language', 'image')
+    list_filter = ('is_visible', 'is_featured', 'website', 'tag', 'with_picture')
     search_fields = ('title', 'website')
 
 @admin.register(Videos)
