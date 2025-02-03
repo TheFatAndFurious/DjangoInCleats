@@ -16,6 +16,8 @@ vite_css_link = vite_css[0]
 def comments(request, article_id):
     canonical_url = request.build_absolute_uri()
     return render(request, 'news/comments.html', {
+        'vite_css': vite_css_link,
+        'vite_js': vite_js,
         'unique_identifier': article_id,
         'canonical_url': canonical_url
     })
