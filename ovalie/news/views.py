@@ -13,6 +13,13 @@ vite_css = get_vite_asset_path('src/main.ts', file_type="css")
 vite_css_link = vite_css[0]
 
 
+def comments(request, article_id):
+    canonical_url = request.build_absolute_uri()
+    return render(request, 'news/comments.html', {
+        'unique_identifier': article_id,
+        'canonical_url': canonical_url
+    })
+
 def articles_page(request):
     featured_articles = Article.objects.prefetch_related('keywords').filter(is_featured=True).order_by('-published_at')[:20]
 
