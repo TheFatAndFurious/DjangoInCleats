@@ -1,7 +1,7 @@
 
-<div class="mt-6 min-h-24">
-    <h2 class="text-3xl font-bold text-primary-content">{{ title|default:"Default Title" }}</h2>
-    {% if subtitle %}
-    <p class="text-xs italic mx-16">{{ subtitle|default:"Default Subtitle" }}</p>
-    {% endif %}
+<div class="mt-6 min-h-16">
+    <h2 class="text-3xl font-bold text-primary-content underline">{{ title | default:"Default Title" | upper }}</h2>
+<!--    {% if subtitle %}-->
+<!--    <p class="text-xs italic mx-16">{{ subtitle|default:"Default Subtitle" }}</p>-->
+<!--    {% endif %}-->
 </div>

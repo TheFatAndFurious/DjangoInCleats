@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     toggleBtn.addEventListener('click', () => {
       // Switch theme between light and dark
-      storedTheme = (storedTheme === 'cyberpunk') ? 'business' : 'cyberpunk';
+      storedTheme = (storedTheme === 'cupcake') ? 'business' : 'cupcake';
       document.documentElement.setAttribute('data-theme', storedTheme);
       localStorage.setItem('theme', storedTheme);
     });
