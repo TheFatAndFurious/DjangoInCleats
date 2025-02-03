@@ -14,7 +14,7 @@ vite_css_link = vite_css[0]
 
 
 def articles_page(request):
-    featured_articles = Article.objects.prefetch_related('keywords').filter(is_featured=True).order_by('-published_at')[:10]
+    featured_articles = Article.objects.prefetch_related('keywords').filter(is_featured=True).order_by('-published_at')[:20]
 
     return render(request, 'news/featured_articles.html', {
         'vite_css': vite_css_link,
@@ -53,7 +53,7 @@ def home(request):
         round_number = upcoming_games[0].round_number
 
     # TODO: use the articles fetching method instead of fetching several times the same data
-    featured_articles = Article.objects.prefetch_related('keywords').filter(is_featured=True).order_by('-published_at')[:8]
+    featured_articles = Article.objects.prefetch_related('keywords').filter(is_featured=True).order_by('-published_at')[:20]
 
     selected_videos = Videos.objects.filter(is_visible=True).filter(categories__category__iexact=videos).order_by('-published_at')[:5]
 
