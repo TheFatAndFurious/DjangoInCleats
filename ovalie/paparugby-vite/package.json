@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "daisyui": "^4.12.23",
+    "daisyui": "^3.9.4",
     "typescript": "~5.6.2",
     "vite": "^6.0.5"
   },
