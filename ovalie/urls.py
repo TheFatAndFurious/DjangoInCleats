@@ -31,7 +31,7 @@ from django.contrib import sitemaps
 from django.contrib.sitemaps.views import sitemap
 from django.conf import settings
 from django.conf.urls.static import static
-
+from debug_toolbar.toolbar import debug_toolbar_urls
 
 urlpatterns = [
     path("__reload__/", include("django_browser_reload.urls")),
@@ -41,7 +41,7 @@ urlpatterns = [
     re_path(r'^ads\.txt$', serve, {'path': 'ads.txt', 'document_root': 'ovalie/news/static/news/'}),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
     path('robots.txt', robots_txt, name='robots_txt'),
-]
+] + debug_toolbar_urls()
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'django_browser_reload',
     'django_q',
     'django.contrib.sitemaps',
+    "debug_toolbar",
 ]
 
 MIDDLEWARE = [
@@ -65,7 +66,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    "django_browser_reload.middleware.BrowserReloadMiddleware"
+    "django_browser_reload.middleware.BrowserReloadMiddleware",
+     "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
 ROOT_URLCONF = 'ovalie.urls'
