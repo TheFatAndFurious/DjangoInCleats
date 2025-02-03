@@ -65,8 +65,9 @@ def home(request):
     featured_articles = Article.objects.prefetch_related('keywords').filter(is_featured=True).order_by('-published_at')[:20]
 
     selected_videos = Videos.objects.filter(is_visible=True).filter(categories__category__iexact=videos).order_by('-published_at')[:5]
-
+    uprugby_video = Videos.objects.filter(channel="Up Rugby").order_by('-published_at')[:1]
     # fetch teams
+    print(uprugby_video)
     top14_teams = KeywordGroup.objects.filter(league='top14')
     prod2_teams = KeywordGroup.objects.filter(league='prod2')
 
@@ -98,6 +99,7 @@ def home(request):
             'round_number': round_number,
             'vite_css': vite_css_link,
             'vite_js': vite_js,
+            'uprugby_video': uprugby_video[0],
             'featured_articles': featured_articles})
 
 

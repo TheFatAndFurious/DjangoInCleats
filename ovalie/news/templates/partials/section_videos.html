@@ -1,6 +1,10 @@
 <!-- FEATURED VIDEOS SECTION -->
 <div class="flex flex-col">
-  {% include 'partials/section_title.html' with title="Vidéos à voir" subtitle="Parcequ'une image vaut mille mots" %}
+  {% include 'partials/section_title.html' with title="Le coin d'UpRugby" %}
+    <div class="px-6">
+        {% include 'partials/block_uprugby.html' %}
+    </div>
+  {% include 'partials/section_title.html' with title="Vidéos à voir" %}
     <div hx-get="/" hx-target="#videos-container" hx-swap="innerHTML" hx-trigger="change" hx-include="#videos" class="mt-4">
 <!--  SELECTEUR DE CATEGORIES VIDEOS-->
         <select class="select select-bordered w-full max-w-xs" id="videos" name="videos">
