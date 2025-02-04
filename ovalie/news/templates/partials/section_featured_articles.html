@@ -24,7 +24,7 @@
 
     {% else %}
       <!-- Fallback if `witch_picture` is False or no image is available -->
-      <a href="{{ article.link }}" class="relative" target="_blank" rel="noopener noreferrer">
+      <a href="/comments/{{article.id}}#disqus_thread" class="relative">
         <div class="text-primary-content text-center px-4 hover:text-blue-600 duration-200">
           <p class="font-semibold">
             {{ article.admin_comment }}
