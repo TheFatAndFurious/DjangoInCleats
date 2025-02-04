@@ -10,9 +10,7 @@
 
     {% if article.with_picture and article.image %}
       <!-- Display article.image as a background if `witch_picture` is True -->
-      <a href="{{ article.link }}"
-         target="_blank"
-         rel="noopener noreferrer"
+      <a href="/comments/{{article.id}}"
          class="relative block h-52 lg:h-48 bg-center bg-cover hover:opacity-80 transition-opacity duration-200 shadow"
          style="background-image: url('{{ article.image.url }}');">
         <!-- Optional overlay for text readability -->
@@ -22,9 +20,7 @@
           </p>
         </div>
       </a>
-      <a class="text-xs" href="/comments/{{article.id}}#disqus_thread">
-            <p class="text-xs">Commentaires</p>
-          </a>
+      <a href="/comments/{{article.id}}#disqus_thread" class="text-sm">Commentaires</a>
 
     {% else %}
       <!-- Fallback if `witch_picture` is False or no image is available -->
@@ -36,7 +32,7 @@
         </div>
       </a>
           <a class="text-xs" href="/comments/{{article.id}}#disqus_thread">
-            <p class="text-xs">Commentaires</p>
+            Commentaires
           </a>
     {% endif %}
   </div>
