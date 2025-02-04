@@ -41,6 +41,7 @@ class Article(models.Model):
     is_video = models.BooleanField(default=False)
     tag = models.ForeignKey(Tag, on_delete=models.CASCADE, null=True)
     with_picture = models.BooleanField(default=False)
+    papa_comments = models.TextField(null=True, blank=True)
     def __str__(self):
         return self.title
 

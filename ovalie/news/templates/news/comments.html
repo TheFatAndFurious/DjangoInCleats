@@ -4,7 +4,23 @@
 
 {% block content %}
 <div class="mt-8 mx-2 lg:max-w-3xl mx-auto">
-<div id="disqus_thread"></div>
+
+<div>
+    <h1 class="text-4xl font-bold text-center">{{article.title}}</h1>
+    <p class="text-sm text-center">{{article.published_at}}</p>
+    <img src="{{article.image.url}}"
+         alt="{{article.title}}"
+         class="w-full h-32 object-cover">
+    <a href="{{article.link}}">
+        <p class="font-bold mt-8"> >> Lien vers l'article de {{article.website}}</p>
+    </a>
+    {% if article.papa_comments %}
+    <p class="italic mt-4">L'avis de PapaRugby: </p>
+    <p class="mt-4">{{article.papa_comments | safe}}</p>
+    {% endif %}
+</div>
+
+<div id="disqus_thread" class="mt-12 mb-12"></div>
 <script>
     var disqus_config = function () {
     this.page.url = "{{ canonical_url}}";
