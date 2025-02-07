@@ -13,8 +13,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 
 <!-- Google ads-->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2221928012776901"
-     crossorigin="anonymous"></script>
+<!--<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2221928012776901"-->
+<!--     crossorigin="anonymous">-->
+<!--</script>-->
 <!-- End Google ads-->
 <script>
 // Définissez dataLayer et la fonction gtag.
@@ -63,13 +64,16 @@ gtag('consent', 'default', {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="L'agrégateur de news rugby qui fait chuter ta productivité au travail de 80% mais qui te transforme en savant du rugby. TOP 14, Pro D2, XV de France, rien de ce qui est ovale ne nous sera étranger">
-    <meta name="google-adsense-account" content="ca-pub-2221928012776901">
+<!--    <meta name="google-adsense-account" content="ca-pub-2221928012776901">-->
     <link rel="canonical" href="{{ canonical_url }}">
     <link rel="shortcut icon" type="image/png" href="{% static 'news/ball.png' %}" >
+<!--    TITLE-->
     <title>{% block title %}{% endblock %}</title>
     <script src="{% static 'js/htmx.min.js' %}" defer></script>
     <script src="{% static 'js/script.js' %}" defer></script>
-        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<!--    TWITTER WIDGET-->
+<!--    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>-->
+<!--    BUILT JS AND CSS-->
     {% if debug %}
     <!-- Vite dev server during development -->
     <script type="module" src="http://localhost:5173/src/main.ts"></script>
@@ -94,7 +98,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <footer>
         {% include 'partials/footer.html' %}
     </footer>
-<script id="dsq-count-scr" src="//paparugby.disqus.com/count.js" async></script>
+<!--<script id="dsq-count-scr" src="//paparugby.disqus.com/count.js" async></script>-->
 <!--<blockquote class="twitter-tweet">-->
 <!--        <a href="https://twitter.com/stadetoulousain/status/1883949507056136703"></a>-->
 <!--</blockquote>-->
