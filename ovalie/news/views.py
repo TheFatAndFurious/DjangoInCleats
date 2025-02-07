@@ -15,7 +15,7 @@ vite_css_link = vite_css[0]
 
 def canonical_view(request):
     canonical_url = request.build_absolute_uri()
-    return render(request, 'base.html', {'canonical_url': canonical_url})
+    return render(request, 'news/base.html', {'canonical_url': canonical_url})
 
 def comments(request, article_id):
     canonical_url = request.build_absolute_uri()
