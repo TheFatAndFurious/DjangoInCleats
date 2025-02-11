@@ -15,7 +15,7 @@ from ovalie.news.models import Article, Website, KeywordGroup
 
 
 def run_all_scrapers():
-    print("Scraper rugbyrama")
+    print("Scraper therugbyrama")
     scrap_rugbyrama()
 
     print("Scraping dicodusport")
